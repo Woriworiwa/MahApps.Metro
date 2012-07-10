@@ -6,16 +6,16 @@
     <!-- Theme Base Colors -->
 
     <!--ACCENT COLORS-->
-    <Color x:Key="HighlightDarkColor">#FF086F9E</Color>
-    <Color x:Key="HighlightLightColor">#FF086F9E</Color>
-    <!--80%-->
-    <Color x:Key="AccentColor">#CC119EDA</Color>
+    <Color x:Key="HighlightDarkColor">#FF48cb00</Color>
+    <Color x:Key="HighlightLightColor">#FF48cb00</Color>
+
+    <Color x:Key="AccentColor">#CC48cb00</Color>
     <!--60%-->
-    <Color x:Key="AccentColor2">#99119EDA</Color>
+    <Color x:Key="AccentColor2">#9948cb00</Color>
     <!--40%-->
-    <Color x:Key="AccentColor3">#66119EDA</Color>
+    <Color x:Key="AccentColor3">#6648cb00</Color>
     <!--20%-->
-    <Color x:Key="AccentColor4">#33119EDA</Color>
+    <Color x:Key="AccentColor4">#3348cb00</Color>
 
     <!--BASE COLORS-->
     <Color x:Key="BlackColor">#FF000000</Color>

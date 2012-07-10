@@ -117,11 +117,11 @@
     <!-- style for default button -->    
   <Style TargetType="{x:Type Button}">
         <Setter Property="MinHeight"
-                Value="25" />
+                Value="10" />
         <Setter Property="FontWeight"
                 Value="Bold" />
         <Setter Property="FontSize"
-                Value="10" />
+                Value="8" />
         <Setter Property="FontFamily"
                 Value="{DynamicResource DefaultFont}" />
         <Setter Property="Background"
@@ -131,7 +131,7 @@
         <Setter Property="Foreground"
                 Value="{DynamicResource TextBrush}" />
         <Setter Property="Padding"
-                Value="5,6" />
+                Value="2,3" />
         <Setter Property="BorderThickness"
                 Value="1" />
         <Setter Property="Template">
@@ -238,7 +238,7 @@
     </Style>
 
     <Style x:Key="SquareButtonStyle" TargetType="{x:Type Button}">
-        <Setter Property="MinHeight" Value="25" />
+        <Setter Property="MinHeight" Value="20" />
         <Setter Property="FontFamily" Value="{DynamicResource DefaultFont}" />
         <Setter Property="FontWeight" Value="SemiBold" />
         <Setter Property="Background" Value="{DynamicResource GrayBrush7}" />
@@ -333,11 +333,11 @@
         <Setter Property="BorderBrush" Value="{DynamicResource TextBoxBorderBrush}"/>
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}"/>
         <Setter Property="FontFamily" Value="{DynamicResource DefaultFont}"/>
-        <Setter Property="FontSize" Value="10"/>        
+        <Setter Property="FontSize" Value="8"/>        
         <Setter Property="FontWeight" Value="Bold"/>
         <Setter Property="Padding" Value="5,6"/>
         <Setter Property="BorderThickness" Value="1"/>
-        <Setter Property="MinHeight" Value="25"/>
+        <Setter Property="MinHeight" Value="20"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">

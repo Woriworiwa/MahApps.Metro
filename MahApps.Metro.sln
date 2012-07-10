@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MetroDemo", "MetroDemo\Metr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MahApps.Metro.Resources", "MahApps.Metro.Resources\MahApps.Metro.Resources.csproj", "{E708AC99-605B-42A0-8D20-ABCA8FE42DD2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Demo", "..\Demo\Demo.csproj", "{45BEF16C-321C-432B-8B08-572AC76FBD98}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,16 @@ Global
 		{E708AC99-605B-42A0-8D20-ABCA8FE42DD2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{E708AC99-605B-42A0-8D20-ABCA8FE42DD2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{E708AC99-605B-42A0-8D20-ABCA8FE42DD2}.Release|x86.ActiveCfg = Release|Any CPU
+		{45BEF16C-321C-432B-8B08-572AC76FBD98}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{45BEF16C-321C-432B-8B08-572AC76FBD98}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{45BEF16C-321C-432B-8B08-572AC76FBD98}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{45BEF16C-321C-432B-8B08-572AC76FBD98}.Debug|x86.ActiveCfg = Debug|x86
+		{45BEF16C-321C-432B-8B08-572AC76FBD98}.Debug|x86.Build.0 = Debug|x86
+		{45BEF16C-321C-432B-8B08-572AC76FBD98}.Release|Any CPU.ActiveCfg = Release|x86
+		{45BEF16C-321C-432B-8B08-572AC76FBD98}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{45BEF16C-321C-432B-8B08-572AC76FBD98}.Release|Mixed Platforms.Build.0 = Release|x86
+		{45BEF16C-321C-432B-8B08-572AC76FBD98}.Release|x86.ActiveCfg = Release|x86
+		{45BEF16C-321C-432B-8B08-572AC76FBD98}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

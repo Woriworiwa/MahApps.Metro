@@ -14,7 +14,7 @@
         <Setter Property="FontFamily" Value="{DynamicResource ContentFontFamily}" />
         <Setter Property="FontSize" Value="{DynamicResource ContentFontSize}" />
         <Setter Property="BorderThickness" Value="1" />
-        <Setter Property="MinHeight" Value="26" />
+        <Setter Property="MinHeight" Value="20" />
         <Setter Property="Background" Value="{DynamicResource ControlBackgroundBrush}" />
         <Setter Property="Foreground" Value="{DynamicResource TextBrush}" />
         <Setter Property="Padding" Value="0" />
@@ -81,7 +81,7 @@
                                        Foreground="{DynamicResource TextBrush}" IsHitTestVisible="False" Opacity="0.6" HorizontalAlignment="Left" VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
                                        Margin="6,0,0,0"/>
 
-                            <Button x:Name="PART_ClearText" Style="{DynamicResource ChromelessButtonStyle}" Width="20"  HorizontalAlignment="Right"  FontFamily="Marlett" Content="r" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(Controls:TextboxHelper.ClearTextButton), Converter={StaticResource BooleanToVisibilityConverter}}" />
+                            <Button x:Name="PART_ClearText" Style="{DynamicResource ChromelessButtonStyle}" Width="20"  HorizontalAlignment="Right"  FontFamily="Marlett" Content="d" Visibility="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(Controls:TextboxHelper.ClearTextButton), Converter={StaticResource BooleanToVisibilityConverter}}" />
                         </Grid>
                         <Rectangle x:Name="DisabledVisualElement"
                                    Stroke="{DynamicResource ControlsDisabledBrush}"

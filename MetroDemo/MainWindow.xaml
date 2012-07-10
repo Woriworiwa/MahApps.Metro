@@ -36,7 +36,7 @@
     <Controls:MetroContentControl>
         <Grid>
             <TabControl>
-                <TabItem Header="_First set of controls">
+                <TabItem Header="_First set of controls">                    
                         <Grid>
 
                             <Grid Margin="0,0,226.999,8">
