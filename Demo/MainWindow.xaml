@@ -6,9 +6,10 @@
         xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
         xmlns:Demo="clr-namespace:Demo" mc:Ignorable="d"
         x:Class="Demo.MainWindow"
-        ShowTitleBar="True"
-        ShowIconOnTitleBar="true"
-        Title="MainWindow" Height="350" Width="525">
+        Icon="mahapps.metro.logo2.ico"
+		ShowTitleBar="True"
+        ShowIconOnTitleBar="false"		
+        Title="Nice Watch" Height="550" Width="800">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -17,10 +18,10 @@
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Controls.AnimatedSingleRowTabControl.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/MahApps.Metro.Resources;component/Icons.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Blue.xaml" />
-                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />                                
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/Green.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/MahApps.Metro;component/Styles/Accents/BaseLight.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <SolidColorBrush x:Key="BlackBrush" Color="Black" />            
+            <SolidColorBrush x:Key="SplitterBorderBrush" Color="{DynamicResource {x:Static SystemColors.InactiveBorderColorKey}}" />
             <Style x:Key="Menu" TargetType="{x:Type TextBlock}">
                 <Setter Property="TextBlock.Margin" Value="5"></Setter>
                 <Setter Property="TextBlock.FontSize" Value="14"></Setter>
@@ -41,203 +42,577 @@
                     </Trigger>
                 </Style.Triggers>
             </Style>
-            <ControlTemplate x:Key="MyBUtton" TargetType="{x:Type Button}">
-            	<Grid>
-            		<VisualStateManager.VisualStateGroups>
-            			<VisualStateGroup x:Name="CommonStates">
-            				<VisualState x:Name="Normal"/>
-            				<VisualState x:Name="MouseOver"/>
-            				<VisualState x:Name="Pressed"/>
-            				<VisualState x:Name="Disabled"/>
-            			</VisualStateGroup>
-            		</VisualStateManager.VisualStateGroups>
-            		<Rectangle x:Name="rectangle" Margin="15,0,29,33.6" RenderTransformOrigin="0.5,0.5">
-            			<Rectangle.RenderTransform>
-            				<TransformGroup>
-            					<ScaleTransform/>
-            					<SkewTransform/>
-            					<RotateTransform/>
-            					<TranslateTransform/>
-            				</TransformGroup>
-            			</Rectangle.RenderTransform>                        
-            			<Rectangle.Fill>
-            				<VisualBrush Stretch="Fill" Visual="{StaticResource appbar_disconnect}" />
-            			</Rectangle.Fill>
-            		</Rectangle>
-            	</Grid>
-            </ControlTemplate>
-            <SolidColorBrush x:Key="BlackBrush2" Color="{DynamicResource BlackColor}" />
+            <Style TargetType="{x:Type Control}" x:Key="baseStyle">
+                <Setter Property="FontSize" Value="9" />
+            </Style>
+            <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
+            <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
+            <Demo:BoolToVisibilityConverter x:Key="converter" />
+            <SolidColorBrush x:Key="TriigerColor" Color="#FF5CAE88"/>
+            <!-- ComboBox, RadioButton, CheckBox, etc... -->
         </ResourceDictionary>
+
     </Window.Resources>
-    <!--<Controls:MetroWindow.WindowCommands>
+    <Controls:MetroWindow.WindowCommands>
         <Controls:WindowCommands>
-            <Button Content="settings" />
-            <Button>
-                <StackPanel Orientation="Horizontal">
-                    <Rectangle Width="20" Height="20">
-                        <Rectangle.Resources>
-                            <SolidColorBrush x:Key="BlackBrush" Color="Black" />
-                        </Rectangle.Resources>
-                        <Rectangle.Fill>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_cupcake}" />
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <TextBlock Text="deploy cupcakes" Foreground="White" />
-                </StackPanel>
-            </Button>
+            <Button Content="menu" Click="Button_Click" />
         </Controls:WindowCommands>
-    </Controls:MetroWindow.WindowCommands>-->
+    </Controls:MetroWindow.WindowCommands>
     <Controls:MetroContentControl>
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition Height="Auto"></RowDefinition>
-                <RowDefinition></RowDefinition>
-            </Grid.RowDefinitions>
-            <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left">
-                <TextBlock Style="{DynamicResource Menu}" ><Run Text="File"/></TextBlock>
-                <TextBlock Style="{DynamicResource Menu}" ><Run Text="Edit"/></TextBlock>
-                <TextBlock Style="{DynamicResource Menu}" Text="View" />
-                <TextBlock Style="{DynamicResource Menu}" Text="Project" />
-                <TextBlock Style="{DynamicResource Menu}" Text="Help" />
-                <TextBlock Style="{DynamicResource Menu}" Text="About" />
-            </StackPanel>
-            <WrapPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left">                
-                <WrapPanel.Resources>                    
-                    <!--color of items-->                    
-                    <SolidColorBrush x:Key="BlackBrush" Color="Black" />
-                    <Style x:Key="menuButton">
-                        <Setter Property="StackPanel.Margin" Value="2,5"></Setter>
-                        <Setter Property="StackPanel.Width" Value="50"></Setter>                        
-                        <Style.Triggers>
-                            <Trigger Property="UIElement.IsMouseOver" Value="True">                                
-                                <Setter Property="StackPanel.Background">
-                                    <Setter.Value>
-                                        <SolidColorBrush Color="{DynamicResource GrayNormal}" />
-                                    </Setter.Value>
-                                </Setter>
-                            </Trigger>
-                            
-                        </Style.Triggers>
-                    </Style>                    
-                </WrapPanel.Resources>
-                <Controls:AppBarButton Content="AppBarButton" Width="Auto" d:LayoutOverrides="Height" MetroImageSource="{StaticResource appbar_arrow_down_up}"/>
-                <Demo:BarButton MetroImageSource="{StaticResource appbar_arrow_down_up}"/>
-                <StackPanel Orientation="Vertical" Style="{StaticResource menuButton}">
-                    <Rectangle Width="20" Height="20">                        
-                        <Rectangle.Fill>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_arrow_down_up}" />
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <TextBlock Text="HTTP&#xa;Server" Foreground="Black" />
+        <Controls:MetroContentControl.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Controls:MetroContentControl.Background>
+        <Border BorderBrush="#FF9B9B9D" BorderThickness="0" Padding="5,0,5,5">
+            <Border.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#33959F00" Offset="1"/>
+                    <GradientStop Color="#FF959F00"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid Background="White">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Left" x:Name="menu" Height="28.62" Visibility="Collapsed" VerticalAlignment="Top">
+                    <TextBlock Margin="10,0,0,0" FontSize="16"  ><Run Text="File"/></TextBlock>
+                    <TextBlock Margin="10,0,0,0" FontSize="16"  ><Run Text="Edit"/></TextBlock>
+                    <TextBlock  Text="View" Margin="10,0,0,0" FontSize="16" />
+                    <TextBlock  Text="Project" Margin="10,0,0,0" FontSize="16" />
+                    <TextBlock  Text="Help" Margin="10,0,0,0" FontSize="16" />
+                    <TextBlock  Text="About" Margin="10,0,0,0" FontSize="16" />
                 </StackPanel>
-                <StackPanel Orientation="Vertical" Style="{StaticResource menuButton}">
-                    <Rectangle Width="20" Height="20">                        
-                        <Rectangle.Fill>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_share}" />
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <TextBlock Text="Serial&#xa;Port" Foreground="Black" />
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Style="{StaticResource menuButton}">
-                    <Rectangle Width="20" Height="20">                        
-                        <Rectangle.Fill>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_disconnect}" />
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <TextBlock Text="TCP/IP&#xa;Server" Foreground="Black" />
-                </StackPanel>
-                <StackPanel Orientation="Vertical" Style="{StaticResource menuButton}">                    
-                    <Rectangle Width="20" Height="20">                        
-                        <Rectangle.Fill>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_globe_wire}" />
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <TextBlock Text="Web&#xa;Service" Foreground="Black" />
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <StackPanel.Resources>
-                    	<SolidColorBrush x:Key="BlackBrush" Color="#CC48cb00" />
-                    </StackPanel.Resources>
-                	<StackPanel.Style>
-                		<StaticResource ResourceKey="menuButton"/>
-                	</StackPanel.Style>
-                    <Rectangle Width="20" Height="20">                        
-                        <Rectangle.Fill>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_smiley_grumpy}" />
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <TextBlock Text="XML&#xa;Analysis" Foreground="Black" />
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <StackPanel.Resources>
-                    	<SolidColorBrush x:Key="BlackBrush" Color="#CC48cb00" />
-                    </StackPanel.Resources>
-                	<StackPanel.Style>
-                		<StaticResource ResourceKey="menuButton"/>
-                	</StackPanel.Style>
-                    <Rectangle Width="20" Height="20">                        
-                        <Rectangle.Fill>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_page_search}" />
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <TextBlock Text="Document&#xa;Analysis" Foreground="Black" />
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <StackPanel.Resources>
-                    	<SolidColorBrush x:Key="BlackBrush" Color="#CC48cb00" />
-                    </StackPanel.Resources>
-                	<StackPanel.Style>
-                		<StaticResource ResourceKey="menuButton"/>
-                	</StackPanel.Style>
-                    <Rectangle Width="20" Height="20">                        
-                        <Rectangle.Fill>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_page_search}" />
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <TextBlock Text="Serial&#xa;Port" Foreground="Black" />
-                </StackPanel>
-                <StackPanel Orientation="Vertical">
-                    <StackPanel.Resources>
-                    	<SolidColorBrush x:Key="BlackBrush" Color="#CC48cb00" />
-                    </StackPanel.Resources>
-                	<StackPanel.Style>
-                		<StaticResource ResourceKey="menuButton"/>
-                	</StackPanel.Style>
-                    <Rectangle Width="20" Height="20">                        
-                        <Rectangle.Fill>
-                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_page_search}" />
-                        </Rectangle.Fill>
-                    </Rectangle>
-                    <TextBlock Text="Serial&#xa;Port" Foreground="Black" />
-                </StackPanel>                
-            </WrapPanel>
-            <Grid Grid.Row="2">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="100"></ColumnDefinition>
-                    <ColumnDefinition Width="Auto"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
-                </Grid.ColumnDefinitions>
-                <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Background="Aqua" Width="5" d:IsLocked="True"/>
-                <StackPanel Orientation="Vertical" Grid.Column="2">
-                    <StackPanel Orientation="Horizontal">
-                        <Label>Trigger name</Label>
-                        <Controls:MenuImageButton
-                            		VerticalAlignment="Top"
-                            		MetroImageSource="{StaticResource appbar_cupcake}"
-                            		Foreground="{DynamicResource BlackBrush}"
-                            		Content="scan" />
-                        <TextBox Controls:TextboxHelper.Watermark="Enter Trigger name"
-                                 Controls:TextboxHelper.ClearTextButton="True"                                         
-                                 VerticalAlignment="Top"
-                                 HorizontalAlignment="Left"
-                                 Width="154.002"
-								VerticalContentAlignment="Center" />
-                        
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" MinHeight="60"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <!-- ribbon -->
+                    <Grid Grid.Row="0" Background="#f1f3f5"  >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" SharedSizeGroup="thegrd" />
+                        </Grid.ColumnDefinitions>
+                        <Canvas x:Name="ribbon_left" Grid.Column="0" Height="60" HorizontalAlignment="Left" Width="250"   >
+                            <Canvas.Resources>
+                                <!--color of items-->
+                                <SolidColorBrush x:Key="BlackBrush" Color="Black" />
+                                <SolidColorBrush x:Key="IconBrush" Color="Azure"/>
+                            </Canvas.Resources>
+                            <StackPanel Height="19.467" Orientation="Horizontal" Width="88.468" Canvas.Left="8">
+                                <UniformGrid Columns="2" Width="36.8">
+                                    <Button Style="{DynamicResource MetroCircleButtonStyle}"    
+                    						ToolTip="Undo"
+                    						VerticalAlignment="Top" BorderBrush="#FFE33A3A" Foreground="{x:Null}">
+                                        <Button.Resources>
+                                            <SolidColorBrush x:Key="BlackBrush" Color="#FF639CF6" />
+                                        </Button.Resources>
+                                        <Rectangle Height="17.867" Width="13.867" d:IsLocked="True">
+                                            <Rectangle.Fill>
+                                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_undo}" />
+                                            </Rectangle.Fill>
+                                        </Rectangle>
+                                    </Button>
+                                    <Button Style="{DynamicResource MetroCircleButtonStyle}"
+                    						ToolTip="Redo"
+                    						VerticalAlignment="Top" Foreground="{x:Null}">
+                                        <Button.Resources>
+                                            <SolidColorBrush x:Key="BlackBrush" Color="#FF639CF6" />
+                                        </Button.Resources>
+                                        <Rectangle Height="17.867" Width="13.867">
+                                            <Rectangle.Fill>
+                                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_redo}" />
+                                            </Rectangle.Fill>
+                                        </Rectangle>
+                                    </Button>
+                                </UniformGrid>
+                                <UniformGrid Columns="2" Width="39.668" >
+                                    <Button Style="{DynamicResource MetroCircleButtonStyle}"    
+                    						ToolTip="Save"
+                    						VerticalAlignment="Top" BorderBrush="#FFE33A3A" Foreground="{x:Null}">
+                                        <Button.Resources>
+                                            <SolidColorBrush x:Key="BlackBrush" Color="#FFF1BC22" />
+                                        </Button.Resources>
+                                        <Rectangle Height="17.867" Width="13.867" d:IsLocked="True">
+                                            <Rectangle.Fill>
+                                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_save}" />
+                                            </Rectangle.Fill>
+                                        </Rectangle>
+                                    </Button>
+                                    <Button Style="{DynamicResource MetroCircleButtonStyle}"
+                    						ToolTip="Open"
+                    						VerticalAlignment="Top" Foreground="{x:Null}">
+                                        <Button.Resources>
+                                            <SolidColorBrush x:Key="BlackBrush" Color="#FFF1BC22" />
+                                        </Button.Resources>
+                                        <Rectangle Height="17.867" Width="13.867">
+                                            <Rectangle.Fill>
+                                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_folder_open}" />
+                                            </Rectangle.Fill>
+                                        </Rectangle>
+                                    </Button>
+                                </UniformGrid>
+                            </StackPanel>
+                            <UniformGrid x:Name="tools_events_order" Canvas.Top="34" Columns="4" Canvas.Left="8" Width="88.468" Visibility="Hidden" >
+                                <UniformGrid.Resources>
+                                    <SolidColorBrush x:Key="BlackBrush" Color="#307d9d" />
+                                </UniformGrid.Resources>
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}"     
+                    					ToolTip="Move right"
+                    					VerticalAlignment="Top" BorderBrush="#FFE33A3A" Foreground="{x:Null}">
+                                    <Rectangle Height="17.867" Width="13.867" d:IsLocked="True">
+                                        <Rectangle.Fill>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_arrow_right}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Button>
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}"
+                    					ToolTip="Move left"
+                    					VerticalAlignment="Top" Foreground="{x:Null}">
+                                    <Rectangle Height="17.867" Width="13.867">
+                                        <Rectangle.Fill>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_arrow_left}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Button>
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}"       
+                    					ToolTip="Move down"
+                    					VerticalAlignment="Top" BorderBrush="#FFE33A3A" Foreground="{x:Null}">
+                                    <Rectangle Height="17.867" Width="13.867" d:IsLocked="True">
+                                        <Rectangle.Fill>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_arrow_down}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Button>
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}"
+                    					ToolTip="Move up"
+                    					VerticalAlignment="Top" Foreground="{x:Null}">
+                                    <Rectangle Height="17.867" Width="13.867">
+                                        <Rectangle.Fill>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_arrow_up}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Button>
+                            </UniformGrid>
+                            <UniformGrid x:Name="tools_variables" Canvas.Top="34.133" Columns="4" Canvas.Left="8" Width="88.468" Visibility="Hidden" >
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}"    
+                    					ToolTip="Undo"
+                    					VerticalAlignment="Top" BorderBrush="#FFE33A3A" Foreground="{x:Null}" HorizontalAlignment="Left">
+                                    <Button.Resources>
+                                        <SolidColorBrush x:Key="BlackBrush" Color="#FF639CF6" />
+                                    </Button.Resources>
+                                    <Rectangle Height="17.867" Width="13.867" d:IsLocked="True">
+                                        <Rectangle.Fill>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_add}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Button>
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}"
+                    					ToolTip="Redo"
+                    					VerticalAlignment="Top" Foreground="{x:Null}" HorizontalAlignment="Left">
+                                    <Button.Resources>
+                                        <SolidColorBrush x:Key="BlackBrush" Color="#FF639CF6" />
+                                    </Button.Resources>
+                                    <Rectangle Height="17.867" Width="13.867">
+                                        <Rectangle.Fill>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_delete}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Button>
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}"
+                    					ToolTip="Redo"
+                    					VerticalAlignment="Top" Foreground="{x:Null}" HorizontalAlignment="Left">
+                                    <Button.Resources>
+                                        <SolidColorBrush x:Key="BlackBrush" Color="#FF639CF6" />
+                                    </Button.Resources>
+                                    <Rectangle Height="17.867" Width="13.867">
+                                        <Rectangle.Fill>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_page_multiple}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Button>
+                                <Button Style="{DynamicResource MetroCircleButtonStyle}"
+                    					ToolTip="Redo"
+                    					VerticalAlignment="Top" Foreground="{x:Null}" HorizontalAlignment="Left">
+                                    <Button.Resources>
+                                        <SolidColorBrush x:Key="BlackBrush" Color="#FF639CF6" />
+                                    </Button.Resources>
+                                    <Rectangle Height="17.867" Width="13.867">
+                                        <Rectangle.Fill>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_clipboard_file}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                </Button>
+                            </UniformGrid>
+                        </Canvas>
+                        <WrapPanel Orientation="Horizontal" Height="65" Grid.Column="1" >
+                            <WrapPanel.Resources>
+                                <!--color of items-->
+                                <SolidColorBrush x:Key="BlackBrush" Color="Black" />
+                                <SolidColorBrush x:Key="IconBrush" Color="Azure"/>
+                            </WrapPanel.Resources>
+                            <Controls:AppBarButton                        	
+                    				VerticalAlignment="Top"                                    
+                    				Padding="5"
+                    				Height="65"
+                    				MetroImageSource="{StaticResource appbar_arrow_down_up}"
+                    				Foreground="{DynamicResource TriigerColor}"
+                    				Width="49.467"
+                                    HorizontalContentAlignment="Center"
+                    				Background="{x:Null}"
+                    				Click="AddTab_Click"
+                    				FontSize="8"
+                    				Content="HTTP&#xa;Port" BorderBrush="{x:Null}"/>
+                            <Controls:AppBarButton       
+                                    HorizontalContentAlignment="Center"
+                    				VerticalAlignment="Top"                                    
+                    				FontSize="8"
+                    				Padding="5"
+                    				Height="65"
+                    				MetroImageSource="{StaticResource appbar_share}"
+                    				Foreground="{DynamicResource TriigerColor}"
+                    				Width="49.467"
+                    				Background="{x:Null}"                                    
+                    				Click="AddTab_Click"
+                    				Content="Serial&#xa;Port" BorderBrush="{x:Null}"/>
+                            <Controls:AppBarButton
+                        	        HorizontalContentAlignment="Center"
+                    				VerticalAlignment="Top"                                    
+                    				Padding="5"
+                    				Height="65"
+                    				MetroImageSource="{StaticResource appbar_disconnect}"
+                    				Foreground="{DynamicResource TriigerColor}"
+                    				Width="49.467"
+                    				Background="#FFF8FDF2"
+                    				Click="AddTab_Click"
+                    				FontSize="8"
+                    				Content="TCP/IP&#xa;Server" BorderBrush="{x:Null}"/>
+                            <Controls:AppBarButton       
+                                    HorizontalContentAlignment="Center"
+                    				VerticalAlignment="Top"                                    
+                    				Padding="5"
+                    				Height="65"
+                    				MetroImageSource="{StaticResource appbar_barcode}"
+                    				Foreground="{DynamicResource TriigerColor}"
+                    				Width="49.467"
+                    				Background="#FFF8FDF2"
+                    				Click="AddTab_Click"
+                    				FontSize="8"
+                    				Content="Web&#xa;Service" BorderBrush="{x:Null}"/>
+                            <Controls:AppBarButton           
+                                    HorizontalContentAlignment="Center"
+                    				VerticalAlignment="Top"                                    
+                    				Padding="5"
+                    				Height="65"
+                    				MetroImageSource="{StaticResource appbar_barcode}"
+                    				Foreground="{DynamicResource AnalysisColor}"
+                    				Width="49.467"
+                    				Background="#FFF8FDF2"
+                    				FontSize="8"
+                    				Click="AddTab_Click"
+                    				Content="XML&#xa;Analysis" BorderBrush="{x:Null}"/>
+                            <Controls:AppBarButton         
+                                    HorizontalContentAlignment="Center"
+                    				VerticalAlignment="Top"                                       
+                    				Padding="5"
+                    				Height="65"
+                    				MetroImageSource="{StaticResource appbar_page_search}"
+                    				Foreground="{DynamicResource AnalysisColor}"
+                    				Width="49.467"
+                    				Background="#FFF8FDF2"
+                    				FontSize="8"
+                    				Click="AddTab_Click"
+                    				Content="XML&#xa;Analysis" BorderBrush="{x:Null}"/>
+                        </WrapPanel>
+                    </Grid>
+                    <!-- tabs -->
+                    <StackPanel Grid.Row="1">
+                        <TabControl x:Name="tabShown" Height="Auto" SelectionChanged="TabControl_SelectionChanged">
+                            <TabItem Header="Database trigger" Style="{DynamicResource TabControl}">
+                            </TabItem>
+                            <TabItem Header="Document analysis" Style="{DynamicResource TabControl}">
+                            </TabItem>
+                            <TabItem Header="Serial port" Style="{DynamicResource TabControl}">
+                            </TabItem>
+                        </TabControl>
                     </StackPanel>
-                    <Button Content="Button" HorizontalAlignment="Left" Height="71.2" Margin="72.8,0,0,0" Width="105.6" Template="{DynamicResource MyBUtton}"/>                    
-                </StackPanel>                
+                    <!-- content -->
+                    <Grid Grid.Row="2" x:Name="grd">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="250" />
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition Width="*" SharedSizeGroup="thegrd" />
+                        </Grid.ColumnDefinitions>
+                        <Border Padding="5,0,0,0">
+                            <!-- left panel -->
+                            <StackPanel x:Name="left_panel" Orientation="Vertical" Background="#FFF1F3F5" Margin="0" d:LayoutOverrides="Width, Height">
+                                <UniformGrid x:Name="stackPanel" Height="66" Grid.Row="0" VerticalAlignment="Top" Columns="3">
+                            		<Border BorderThickness="0"  BorderBrush="#FFBCC1C6" Margin="0" d:LayoutOverrides="Width">
+                            			<Border.Resources>
+                            				<SolidColorBrush x:Key="BlackBrush" Color="#00667A" />
+                            			</Border.Resources>
+                            			<Controls:AppBarButton
+                            				x:Name="LeftTabs1_button"
+                            				VerticalAlignment="Top"                                    
+                            				Padding="5, 10, 5, 10"
+                            				Height="Auto"
+                            				MetroImageSource="{StaticResource appbar_barcode}"
+                            				Foreground="{DynamicResource BlackBrush}"                            				
+                            				Background="Black"
+                            				Click="LeftTabs1_Click"
+                            				Content="Config" BorderBrush="{x:Null}" BorderThickness="0" Width="Auto"/>
+                            		</Border>
+                            		<Border
+                            			Background="White" BorderThickness="0" BorderBrush="#FFBCC1C6" Margin="0" d:LayoutOverrides="Width">
+                            			<Border.Resources>
+                            				<SolidColorBrush x:Key="BlackBrush" Color="Black" />
+                            			</Border.Resources>
+                            			<Controls:AppBarButton
+                            				x:Name="leftTabs2_button"
+                            				VerticalAlignment="Top"                                                                				
+                            				Padding="5, 10, 5, 10"
+                            				Height="Auto"
+                            				MetroImageSource="{StaticResource appbar_deeplink}"
+                            				Content="Variables"
+    									
+                            				Click="LeftTabs2_Click" BorderBrush="{x:Null}" Foreground="#FF9C66EB" BorderThickness="0" Width="Auto"/>
+                            		</Border>
+                            		<Border Background="White" BorderThickness="0" BorderBrush="#FFBCC1C6" Margin="0" d:LayoutOverrides="Width" >
+                            			<Border.Resources>
+                            				<SolidColorBrush x:Key="BlackBrush" Color="#FFD6D2D2" />
+                            			</Border.Resources>
+                            			<Controls:AppBarButton 
+                            				x:Name="leftTabs3_button"
+                            				VerticalAlignment="Top"                                                                				
+                            				Padding="5, 10, 5, 10"
+                            				Height="Auto"
+                            				MetroImageSource="{StaticResource appbar_lightning}"                            		
+                            				Content="Events" 
+                            				Background="#FF921678"
+                            				Click="LeftTabs3_Click" BorderBrush="{x:Null}" Foreground="#FFA3A089" BorderThickness="0" Width="Auto"/>
+                            		</Border>
+                            	</UniformGrid>
+                                <StackPanel  Orientation="Vertical"  x:Name="left" Margin="0">
+                                    <Border BorderBrush="Black"  BorderThickness="0" Padding="8" Height="339.4">
+                                        <ListView Width="Auto" HorizontalContentAlignment="Stretch" BorderBrush="{x:Null}" >
+                                            <ListView.Resources>
+                                                <Style TargetType="{x:Type Rectangle}" x:Key="rectangle">
+                                                    <Setter Property="Width" Value="10"/>
+                                                    <Setter Property="Height" Value="10"/>
+                                                    <Setter Property="Fill" Value="Black"/>
+                                                    <Setter Property="Margin" Value="5"/>
+                                                </Style>
+                                                <Style TargetType="Border" x:Key="border">
+                                                    <Setter Property="Padding" Value="5"></Setter>
+                                                </Style>
+                                            </ListView.Resources>
+                                            <Border Style="{DynamicResource ResourceKey=border}">
+                                                <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                    <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                        <Rectangle.OpacityMask>
+                                                            <VisualBrush Visual="{StaticResource appbar_arrow_down_up}"
+                                    						Stretch="Fill" />
+                                                        </Rectangle.OpacityMask>
+                                                    </Rectangle>
+                                                    <TextBlock><Run Text="General"/></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Style="{DynamicResource ResourceKey=border}">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                        <Rectangle.OpacityMask>
+                                                            <VisualBrush Visual="{StaticResource appbar_arrow_down_up}"
+                                    						Stretch="Fill" />
+                                                        </Rectangle.OpacityMask>
+                                                    </Rectangle>
+                                                    <TextBlock><Run Text="Execution Options"/></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Style="{DynamicResource ResourceKey=border}">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                        <Rectangle.OpacityMask>
+                                                            <VisualBrush Visual="{StaticResource appbar_arrow_down_up}"
+                                    						Stretch="Fill" />
+                                                        </Rectangle.OpacityMask>
+                                                    </Rectangle>
+                                                    <TextBlock><Run Text="Other"/></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                            <Border Style="{DynamicResource ResourceKey=border}">
+                                                <StackPanel Orientation="Horizontal">
+                                                    <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                        <Rectangle.OpacityMask>
+                                                            <VisualBrush Visual="{StaticResource appbar_arrow_down_up}"
+                                    						Stretch="Fill" />
+                                                        </Rectangle.OpacityMask>
+                                                    </Rectangle>
+                                                    <TextBlock><Run Text="Security"/></TextBlock>
+                                                </StackPanel>
+                                            </Border>
+                                        </ListView>
+                                    </Border>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                        <GridSplitter Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="5" Margin="0,-1,0,1" Background="White"/>
+                        <!-- main -->
+                        <StackPanel Orientation="Vertical" Grid.Column="2">
+                            <TabControl x:Name="tabHidden" >
+                                <TabItem Header="Database trigger" Style="{DynamicResource HeadlessTabControl}" >
+                                    <StackPanel>
+                                        <StackPanel.Resources>
+                                            <ResourceDictionary>
+                                                <SolidColorBrush x:Key="GroupBorderBrush" Color="{DynamicResource Gray1}" />
+                                                <Style x:Key="group" TargetType="{x:Type Border}">
+                                                    <Setter Property="Padding" Value="2,0,0,0"/>
+                                                    <!--<Setter Property="BorderBrush" Value="{DynamicResource GroupBorderBrush}"></Setter>-->
+                                                    <Setter Property="Margin" Value="3,0,8,8"/>
+                                                    <Setter Property="BorderThickness" Value="1"/>
+                                                </Style>
+                                                <Style x:Key="row" TargetType="{x:Type Border}">
+                                                    <Setter Property="Padding" Value="0"/>
+                                                </Style>
+                                                <Style x:Key="rowHeader" TargetType="{x:Type StackPanel}"/>
+                                            </ResourceDictionary>
+                                        </StackPanel.Resources>
+                                        <StackPanel Orientation="Vertical">
+                                            <Border Style="{StaticResource ResourceKey=group}">
+                                                <StackPanel>
+                                                    <StackPanel Height="20" >
+                                                        <TextBlock FontWeight="Bold" FontSize="10.667"><Run Text="Trigger name"/></TextBlock>
+                                                    </StackPanel>
+                                                    <Border Style="{StaticResource ResourceKey=row}">
+                                                        <WrapPanel Orientation="Horizontal">
+                                                            <Label Width="101.463" Content="Trigger name"/>
+                                                            <TextBox 
+    															Controls:TextboxHelper.ClearTextButton="True"                                         
+    															VerticalAlignment="Top"
+    															HorizontalAlignment="Left"
+    															Width="154.002"
+    															VerticalContentAlignment="Center"  />
+
+                                                        </WrapPanel>
+                                                    </Border>
+                                                    <Border Style="{StaticResource ResourceKey=row}">
+                                                        <WrapPanel Orientation="Horizontal">
+                                                            <Label Content="Database connection" Width="102.26"/>
+                                                            <TextBox
+    															Controls:TextboxHelper.ClearTextButton="False"                                         
+    															VerticalAlignment="Top"
+    															HorizontalAlignment="Left"
+    															Width="154.002"
+    															VerticalContentAlignment="Center" IsEnabled="False" Text="Hello"/>
+                                                            <Button Content="Manage connections" ToolTip="This is a tooltip" Width="154.002" Height="20">
+                                                                <Button.ContextMenu>
+                                                                    <ContextMenu>
+                                                                        <MenuItem  Header="Main database" />
+                                                                        <MenuItem  Header="Test database" />
+                                                                        <MenuItem  Header="Backup database" />
+                                                                        <MenuItem  Header="Sandbox" />
+                                                                        <Separator />
+                                                                        <MenuItem Header="Sandbox 2" />
+                                                                        <MenuItem Header="Express" />
+                                                                    </ContextMenu>
+                                                                </Button.ContextMenu>
+                                                            </Button>
+                                                        </WrapPanel>
+                                                    </Border>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical">
+                                            <Border Style="{StaticResource ResourceKey=group}">
+                                                <StackPanel>
+                                                    <StackPanel Height="20">
+                                                        <TextBlock FontWeight="Bold" FontSize="10.667"><Run Text="Detection options"/></TextBlock>
+                                                    </StackPanel>
+                                                    <Border Style="{StaticResource ResourceKey=row}">
+                                                        <WrapPanel Orientation="Horizontal">
+                                                            <Label Content="Check database in the time intervals (seconds)" />
+                                                            <TextBox 
+    															Controls:TextboxHelper.ClearTextButton="False"                                         
+    															VerticalAlignment="Top"
+    															HorizontalAlignment="Left"
+    															Width="154.002"
+    															VerticalContentAlignment="Center"  />
+
+                                                        </WrapPanel>
+                                                    </Border>
+                                                    <Border Style="{StaticResource ResourceKey=row}">
+                                                        <WrapPanel Orientation="Horizontal">
+                                                            <Label Content="Type" Width="193.067"/>
+                                                            <ComboBox SelectedIndex="0">
+                                                                <ComboBoxItem Content="Get records based on unique incremental field value" />
+                                                                <ComboBoxItem Content="ComboBoxItem" />
+                                                                <ComboBoxItem Content="ComboBoxItem" />
+                                                            </ComboBox>
+                                                        </WrapPanel>
+                                                    </Border>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                        <StackPanel Orientation="Vertical">
+                                            <Border Style="{StaticResource ResourceKey=group}">
+                                                <StackPanel>
+                                                    <StackPanel Height="20">
+                                                        <TextBlock FontWeight="Bold" FontSize="10.667"><Run Text="Advanced settings"/></TextBlock>
+                                                    </StackPanel>
+                                                    <Border Style="{StaticResource ResourceKey=row}">
+                                                        <WrapPanel Orientation="Horizontal">
+                                                            <Label Content="Table name" Width="97.673"/>
+                                                            <TextBox 
+    															Controls:TextboxHelper.ClearTextButton="True"                                         
+    															VerticalAlignment="Top"
+    															HorizontalAlignment="Left"
+    															Width="154.002"
+    															VerticalContentAlignment="Center"  />
+
+                                                        </WrapPanel>
+                                                    </Border>
+                                                    <Border Style="{StaticResource ResourceKey=row}">
+                                                        <WrapPanel Orientation="Horizontal">
+                                                            <Label Content="Key field" Width="97.53"/>
+                                                            <TextBox 
+    															Controls:TextboxHelper.ClearTextButton="True"                                         
+    															VerticalAlignment="Top"
+    															HorizontalAlignment="Left"
+    															Width="154.002"
+    															VerticalContentAlignment="Center"  />
+
+                                                        </WrapPanel>
+                                                    </Border>
+                                                    <Border Style="{StaticResource ResourceKey=row}">
+                                                        <WrapPanel Orientation="Horizontal">
+                                                            <Label Content="Key field default value"/>
+                                                            <TextBox 
+    															Controls:TextboxHelper.ClearTextButton="True"                                         
+    															VerticalAlignment="Top"
+    															HorizontalAlignment="Left"
+    															Width="154.002"
+    															VerticalContentAlignment="Center"  />
+
+                                                        </WrapPanel>
+                                                    </Border>
+                                                </StackPanel>
+                                            </Border>
+                                        </StackPanel>
+                                    </StackPanel>
+                                </TabItem>
+                                <TabItem Header="Document analysis" Content="The Pepperoni Tab" Style="{DynamicResource HeadlessTabControl}" />
+                                <TabItem Header="Serial port" Content="The Mushrooms Tab" Style="{DynamicResource HeadlessTabControl}"/>
+                            </TabControl>
+                        </StackPanel>
+                    </Grid>
+                </Grid>
             </Grid>
-        </Grid>
+
+        </Border>
+
     </Controls:MetroContentControl>
 </Controls:MetroWindow>
+

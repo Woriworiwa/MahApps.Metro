@@ -20,8 +20,9 @@ namespace Demo
 	{
 		public BarButton()
 		{
-			this.InitializeComponent();            
-		}
+			this.InitializeComponent();
+            this.MetroText = "Hello"; 
+		}        
 
         public static readonly DependencyProperty MetroImageSourceProperty =
             DependencyProperty.Register("MetroImageSource", typeof(Visual), typeof(BarButton), new PropertyMetadata(default(Visual)));
@@ -31,5 +32,19 @@ namespace Demo
             get { return (Visual)GetValue(MetroImageSourceProperty); }
             set { SetValue(MetroImageSourceProperty, value); }
         }
+
+
+
+        public string MetroText
+        {
+            get { return (string)GetValue(MetroTextProperty); }
+            set { SetValue(MetroTextProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for MetroText.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty MetroTextProperty =
+            DependencyProperty.Register("MetroText", typeof(string), typeof(BarButton), new PropertyMetadata("Text"));
+
+        
 	}
 }

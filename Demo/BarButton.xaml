@@ -7,17 +7,13 @@
 	mc:Ignorable="d"
 	x:Class="Demo.BarButton"
 	x:Name="UserControl"
-	d:DesignWidth="88" d:DesignHeight="77.6">
-	<UserControl.Resources>
-		<Canvas Width="48" Height="48" Clip="F1 M 0,0L 48,0L 48,48L 0,48L 0,0" UseLayoutRounding="False" x:Key="appbar_arrow_down_up">
-			<Path Width="14" Height="25" Canvas.Left="11" Canvas.Top="14" Stretch="Fill" Fill="{DynamicResource BlackBrush}" Data="F1 M 16,14L 20,14L 20,30.75L 25,25L 25,31.5L 18,39L 11,31.5L 11,25L 16,30.75L 16,14 Z " />
-			<Path Width="14" Height="25" Canvas.Left="23" Canvas.Top="9.00001" Stretch="Fill" Fill="{DynamicResource BlackBrush}" Data="F1 M 28,34L 32,34L 32,17.25L 37,23L 37,16.5L 30,9.00001L 23,16.5L 23,23L 28,17.25L 28,34 Z " />
-		</Canvas>
-        <ControlTemplate x:Key="ButtonControlTemplate1" >                
-			<Grid x:Name="grid" Background="#FFF1C8C8">
+	d:DesignWidth="50" d:DesignHeight="60">
+	<UserControl.Resources>        
+        <ControlTemplate x:Key="ButtonControlTemplate1" TargetType="Button" >                
+			<Grid x:Name="grid" Background="Transparent">
 				<Grid.RowDefinitions>
 					<RowDefinition/>
-					<RowDefinition Height="Auto" MinHeight="35.05"/>
+					<RowDefinition Height="Auto" MinHeight="24.175"/>
 				</Grid.RowDefinitions>
 				<VisualStateManager.VisualStateGroups>
 					<VisualStateGroup x:Name="CommonStates">
@@ -25,28 +21,26 @@
 						<VisualState x:Name="MouseOver">
 							<Storyboard>
 								<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(Panel.Background).(SolidColorBrush.Color)" Storyboard.TargetName="grid">
-									<EasingColorKeyFrame KeyTime="0" Value="#FF3E3434"/>
-								</ColorAnimationUsingKeyFrames>
-								<ColorAnimationUsingKeyFrames Storyboard.TargetProperty="(TextElement.Foreground).(SolidColorBrush.Color)" Storyboard.TargetName="textBlock">
-									<EasingColorKeyFrame KeyTime="0" Value="#FFFFFCFC"/>
+									<EasingColorKeyFrame KeyTime="0" Value="{DynamicResource AccentColor3}"/>
 								</ColorAnimationUsingKeyFrames>
 							</Storyboard>
 						</VisualState>
 						<VisualState x:Name="Pressed"/>
-						<VisualState x:Name="Disabled"/>
+						<VisualState x:Name="Disabled"
+                                     />
 					</VisualStateGroup>
 				</VisualStateManager.VisualStateGroups>
-				<Rectangle Margin="0" Height="32" Width="32" x:Name="img">                        
-					<Rectangle.Fill>                        
-						<VisualBrush Stretch="Fill" Visual="{DynamicResource appbar_arrow_down_up}" />
+				<Rectangle Margin="9,5,9,0" Height="22" Width="22">                        
+					<Rectangle.Fill>
+                        <VisualBrush Stretch="Fill" Visual="{Binding Path=MetroImageSource,ElementName=UserControl}" />
 					</Rectangle.Fill>
 				</Rectangle>
-				<TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Center" Grid.Row="1" Height="Auto" HorizontalAlignment="Center" Margin="0" Width="70.44" TextAlignment="Center"/>
+                <TextBlock x:Name="textBlock" FontWeight="Normal" FontSize="8" TextWrapping="Wrap" Text="{Binding Path=MetroText, ElementName=UserControl}" VerticalAlignment="Center" Grid.Row="1" Height="Auto" HorizontalAlignment="Center" Margin="1.147,0.215,1.813,1.867" Width="Auto" TextAlignment="Center" Foreground="{DynamicResource BlackBrush}"/>
 			</Grid>
 		</ControlTemplate>
 	</UserControl.Resources>
 
 	<Grid x:Name="LayoutRoot">       
-		<Button Content="Button" Template="{DynamicResource ButtonControlTemplate1}"/>
+		<Button Content="Button" Template="{DynamicResource ButtonControlTemplate1}" Background="{x:Null}"/>
 	</Grid>
 </UserControl>
