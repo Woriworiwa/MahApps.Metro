@@ -8,8 +8,8 @@
         x:Class="Demo.MainWindow"
         Icon="mahapps.metro.logo2.ico"
 		ShowTitleBar="True"
-        ShowIconOnTitleBar="false"		
-        Title="Nice Watch" Height="550" Width="800">
+        ShowIconOnTitleBar="false"        
+        Title="Nice Watch" Height="550" Width="900">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -43,7 +43,7 @@
                 </Style.Triggers>
             </Style>
             <Style TargetType="{x:Type Control}" x:Key="baseStyle">
-                <Setter Property="FontSize" Value="9" />
+                <Setter Property="FontSize" Value="12" />
             </Style>
             <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseStyle}"></Style>
             <Style TargetType="{x:Type ListView}" BasedOn="{StaticResource baseStyle}"></Style>
@@ -111,7 +111,7 @@
                                         <Button.Resources>
                                             <SolidColorBrush x:Key="BlackBrush" Color="#FF639CF6" />
                                         </Button.Resources>
-                                        <Rectangle Height="17.867" Width="13.867" d:IsLocked="True">
+                                        <Rectangle Height="17.867" Width="13.867" d:IsLocked="True" UseLayoutRounding="True">
                                             <Rectangle.Fill>
                                                 <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_undo}" />
                                             </Rectangle.Fill>
@@ -249,84 +249,71 @@
                                 </Button>
                             </UniformGrid>
                         </Canvas>
-                        <WrapPanel Orientation="Horizontal" Height="65" Grid.Column="1" >
+                        <WrapPanel Orientation="Horizontal" Height="70" Grid.Column="1" >
                             <WrapPanel.Resources>
                                 <!--color of items-->
                                 <SolidColorBrush x:Key="BlackBrush" Color="Black" />
                                 <SolidColorBrush x:Key="IconBrush" Color="Azure"/>
+                                <Style TargetType="Controls:AppBarButton">
+                                    <Setter Property="FontSize" Value="12"></Setter>
+                                    <Setter Property="Width" Value="60"></Setter>
+                                    <Setter Property="Height" Value="70"></Setter>
+                                </Style>
                             </WrapPanel.Resources>
                             <Controls:AppBarButton                        	
                     				VerticalAlignment="Top"                                    
-                    				Padding="5"
-                    				Height="65"
+                    				Padding="5"                    				
                     				MetroImageSource="{StaticResource appbar_arrow_down_up}"
                     				Foreground="{DynamicResource TriigerColor}"
-                    				Width="49.467"
                                     HorizontalContentAlignment="Center"
                     				Background="{x:Null}"
-                    				Click="AddTab_Click"
-                    				FontSize="8"
-                    				Content="HTTP&#xa;Port" BorderBrush="{x:Null}"/>
+                    				Click="AddTab_Click"                    				
+                    				Content="HTTP&#xa; Port" BorderBrush="{x:Null}"/>
                             <Controls:AppBarButton       
                                     HorizontalContentAlignment="Center"
-                    				VerticalAlignment="Top"                                    
-                    				FontSize="8"
+                    				VerticalAlignment="Top"                                                        				
                     				Padding="5"
-                    				Height="65"
                     				MetroImageSource="{StaticResource appbar_share}"
                     				Foreground="{DynamicResource TriigerColor}"
-                    				Width="49.467"
                     				Background="{x:Null}"                                    
                     				Click="AddTab_Click"
-                    				Content="Serial&#xa;Port" BorderBrush="{x:Null}"/>
+                    				Content="Serial&#xa; Port" BorderBrush="{x:Null}"/>
                             <Controls:AppBarButton
                         	        HorizontalContentAlignment="Center"
                     				VerticalAlignment="Top"                                    
                     				Padding="5"
-                    				Height="65"
                     				MetroImageSource="{StaticResource appbar_disconnect}"
                     				Foreground="{DynamicResource TriigerColor}"
-                    				Width="49.467"
                     				Background="#FFF8FDF2"
-                    				Click="AddTab_Click"
-                    				FontSize="8"
+                    				Click="AddTab_Click"                    				
                     				Content="TCP/IP&#xa;Server" BorderBrush="{x:Null}"/>
                             <Controls:AppBarButton       
                                     HorizontalContentAlignment="Center"
                     				VerticalAlignment="Top"                                    
                     				Padding="5"
-                    				Height="65"
                     				MetroImageSource="{StaticResource appbar_barcode}"
                     				Foreground="{DynamicResource TriigerColor}"
-                    				Width="49.467"
                     				Background="#FFF8FDF2"
-                    				Click="AddTab_Click"
-                    				FontSize="8"
-                    				Content="Web&#xa;Service" BorderBrush="{x:Null}"/>
+                    				Click="AddTab_Click"                    				
+                    				Content="  Web&#xa;Service" BorderBrush="{x:Null}"/>
                             <Controls:AppBarButton           
                                     HorizontalContentAlignment="Center"
                     				VerticalAlignment="Top"                                    
                     				Padding="5"
-                    				Height="65"
                     				MetroImageSource="{StaticResource appbar_barcode}"
                     				Foreground="{DynamicResource AnalysisColor}"
-                    				Width="49.467"
-                    				Background="#FFF8FDF2"
-                    				FontSize="8"
+                    				Background="#FFF8FDF2"                    				
                     				Click="AddTab_Click"
-                    				Content="XML&#xa;Analysis" BorderBrush="{x:Null}"/>
+                    				Content="   XML&#xa;Analysis" BorderBrush="{x:Null}"/>
                             <Controls:AppBarButton         
                                     HorizontalContentAlignment="Center"
                     				VerticalAlignment="Top"                                       
                     				Padding="5"
-                    				Height="65"
                     				MetroImageSource="{StaticResource appbar_page_search}"
                     				Foreground="{DynamicResource AnalysisColor}"
-                    				Width="49.467"
                     				Background="#FFF8FDF2"
-                    				FontSize="8"
                     				Click="AddTab_Click"
-                    				Content="XML&#xa;Analysis" BorderBrush="{x:Null}"/>
+                    				Content="   XML&#xa;Analysis" BorderBrush="{x:Null}"/>
                         </WrapPanel>
                     </Grid>
                     <!-- tabs -->
