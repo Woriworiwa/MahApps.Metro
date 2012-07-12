@@ -67,15 +67,17 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GrayscaleEffect">
-      <HintPath>..\MahApps.Metro\Lib\GrayscaleEffect.dll</HintPath>
+      <HintPath>..\Lib\GrayscaleEffect.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\MahApps.Metro\packages\Newtonsoft.Json.4.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.4.0.3\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PresentationFramework.Aero" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" />
+    <Reference Include="System.Windows.Interactivity">
+      <HintPath>..\Lib\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -150,15 +152,15 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MahApps.Metro\MahApps.Metro.Resources\MahApps.Metro.Resources.csproj">
+    <ProjectReference Include="..\MahApps.Metro.Resources\MahApps.Metro.Resources.csproj">
       <Project>{E708AC99-605B-42A0-8D20-ABCA8FE42DD2}</Project>
       <Name>MahApps.Metro.Resources</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MahApps.Metro\MahApps.Metro\MahApps.Metro.csproj">
+    <ProjectReference Include="..\MahApps.Metro\MahApps.Metro.csproj">
       <Project>{5B1710D2-5DC8-4754-91B2-19165DE49B3D}</Project>
       <Name>MahApps.Metro</Name>
     </ProjectReference>
-    <ProjectReference Include="..\MahApps.Metro\MetroDemo\MetroDemo.csproj">
+    <ProjectReference Include="..\MetroDemo\MetroDemo.csproj">
       <Project>{56E8080F-FFEB-47CD-ADB9-92245F92565B}</Project>
       <Name>MetroDemo</Name>
     </ProjectReference>
