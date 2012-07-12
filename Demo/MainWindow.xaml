@@ -347,7 +347,7 @@
                             				VerticalAlignment="Top"                                    
                             				Padding="5, 10, 5, 10"
                             				Height="Auto"
-                            				MetroImageSource="{StaticResource appbar_barcode}"
+                            				MetroImageSource="{StaticResource appbar_settings}"
                             				Foreground="{DynamicResource BlackBrush}"                            				
                             				Background="Black"
                             				Click="LeftTabs1_Click"
@@ -363,7 +363,7 @@
                             				VerticalAlignment="Top"                                                                				
                             				Padding="5, 10, 5, 10"
                             				Height="Auto"
-                            				MetroImageSource="{StaticResource appbar_deeplink}"
+                            				MetroImageSource="{StaticResource appbar_box}"
                             				Content="Variables"
     									
                             				Click="LeftTabs2_Click" BorderBrush="{x:Null}" Foreground="#FF9C66EB" BorderThickness="0" Width="Auto"/>
@@ -384,63 +384,185 @@
                             		</Border>
                             	</UniformGrid>
                                 <Border BorderBrush="Black"  BorderThickness="0" Padding="8">
-                                    <ListView Width="Auto" HorizontalContentAlignment="Stretch" BorderBrush="{x:Null}" >
-                                        <ListView.Resources>
-                                            <Style TargetType="{x:Type Rectangle}" x:Key="rectangle">
-                                                <Setter Property="Width" Value="10"/>
-                                                <Setter Property="Height" Value="10"/>
-                                                <Setter Property="Fill" Value="Black"/>
-                                                <Setter Property="Margin" Value="5"/>
-                                            </Style>
-                                            <Style TargetType="Border" x:Key="border">
-                                                <Setter Property="Padding" Value="5"></Setter>
-                                            </Style>
-                                        </ListView.Resources>
-                                        <Border Style="{DynamicResource ResourceKey=border}">
-                                            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
-                                                <Rectangle Style="{StaticResource ResourceKey=rectangle}">
-                                                    <Rectangle.OpacityMask>
-                                                        <VisualBrush Visual="{StaticResource appbar_arrow_down_up}"
+                                    <TabControl x:Name="left_tabs" >
+                                        <TabItem Style="{DynamicResource HeadlessTabControl}">
+                                            <ListView Width="Auto" HorizontalContentAlignment="Stretch" BorderBrush="{x:Null}" >
+                                                <ListView.Resources>
+                                                    <Style TargetType="{x:Type Rectangle}" x:Key="rectangle">
+                                                        <Setter Property="Width" Value="10"/>
+                                                        <Setter Property="Height" Value="10"/>
+                                                        <Setter Property="Fill" Value="Black"/>
+                                                        <Setter Property="Margin" Value="5"/>
+                                                    </Style>
+                                                    <Style TargetType="Border" x:Key="border">
+                                                        <Setter Property="Padding" Value="5"></Setter>
+                                                    </Style>
+                                                </ListView.Resources>
+                                                <Border Style="{DynamicResource ResourceKey=border}">
+                                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                            <Rectangle.OpacityMask>
+                                                                <VisualBrush Visual="{StaticResource appbar_settings}"
                                     					Stretch="Fill" />
-                                                    </Rectangle.OpacityMask>
-                                                </Rectangle>
-                                                <TextBlock><Run Text="General"/></TextBlock>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border Style="{DynamicResource ResourceKey=border}">
-                                            <StackPanel Orientation="Horizontal">
-                                                <Rectangle Style="{StaticResource ResourceKey=rectangle}">
-                                                    <Rectangle.OpacityMask>
-                                                        <VisualBrush Visual="{StaticResource appbar_arrow_down_up}"
+                                                            </Rectangle.OpacityMask>
+                                                        </Rectangle>
+                                                        <TextBlock><Run Text="General"/></TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Border Style="{DynamicResource ResourceKey=border}">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                            <Rectangle.OpacityMask>
+                                                                <VisualBrush Visual="{StaticResource appbar_settings}"
                                     					Stretch="Fill" />
-                                                    </Rectangle.OpacityMask>
-                                                </Rectangle>
-                                                <TextBlock><Run Text="Execution Options"/></TextBlock>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border Style="{DynamicResource ResourceKey=border}">
-                                            <StackPanel Orientation="Horizontal">
-                                                <Rectangle Style="{StaticResource ResourceKey=rectangle}">
-                                                    <Rectangle.OpacityMask>
-                                                        <VisualBrush Visual="{StaticResource appbar_arrow_down_up}"
+                                                            </Rectangle.OpacityMask>
+                                                        </Rectangle>
+                                                        <TextBlock><Run Text="Execution Options"/></TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Border Style="{DynamicResource ResourceKey=border}">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                            <Rectangle.OpacityMask>
+                                                                <VisualBrush Visual="{StaticResource appbar_settings}"
                                     					Stretch="Fill" />
-                                                    </Rectangle.OpacityMask>
-                                                </Rectangle>
-                                                <TextBlock><Run Text="Other"/></TextBlock>
-                                            </StackPanel>
-                                        </Border>
-                                        <Border Style="{DynamicResource ResourceKey=border}">
-                                            <StackPanel Orientation="Horizontal">
-                                                <Rectangle Style="{StaticResource ResourceKey=rectangle}">
-                                                    <Rectangle.OpacityMask>
-                                                        <VisualBrush Visual="{StaticResource appbar_arrow_down_up}"
+                                                            </Rectangle.OpacityMask>
+                                                        </Rectangle>
+                                                        <TextBlock><Run Text="Other"/></TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Border Style="{DynamicResource ResourceKey=border}">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                            <Rectangle.OpacityMask>
+                                                                <VisualBrush Visual="{StaticResource appbar_settings}"
                                     					Stretch="Fill" />
-                                                    </Rectangle.OpacityMask>
-                                                </Rectangle>
-                                                <TextBlock><Run Text="Security"/></TextBlock>
-                                            </StackPanel>
-                                        </Border>
-                                    </ListView>
+                                                            </Rectangle.OpacityMask>
+                                                        </Rectangle>
+                                                        <TextBlock><Run Text="Security"/></TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                            </ListView>
+                                        </TabItem>
+                                        <TabItem Style="{DynamicResource HeadlessTabControl}">
+                                            <ListView Width="Auto" HorizontalContentAlignment="Stretch" BorderBrush="{x:Null}" >
+                                                <ListView.Resources>
+                                                    <Style TargetType="{x:Type Rectangle}" x:Key="rectangle">
+                                                        <Setter Property="Width" Value="10"/>
+                                                        <Setter Property="Height" Value="10"/>
+                                                        <Setter Property="Fill" Value="Black"/>
+                                                        <Setter Property="Margin" Value="5"/>                                                       
+                                                    </Style>
+                                                    <Style TargetType="Border" x:Key="border">
+                                                        <Setter Property="Padding" Value="5"></Setter>
+                                                    </Style>
+                                                </ListView.Resources>
+                                                <Border Style="{DynamicResource ResourceKey=border}">
+                                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                            <Rectangle.OpacityMask>
+                                                                <VisualBrush Visual="{StaticResource appbar_box}"
+                                    					Stretch="Fill" />
+                                                            </Rectangle.OpacityMask>
+                                                        </Rectangle>
+                                                        <TextBlock><Run Text="General"/></TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Border Style="{DynamicResource ResourceKey=border}">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                            <Rectangle.OpacityMask>
+                                                                <VisualBrush Visual="{StaticResource appbar_box}" Stretch="Fill" />
+                                                            </Rectangle.OpacityMask>
+                                                        </Rectangle>
+                                                        <TextBlock><Run Text="Execution Options"/></TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Border Style="{DynamicResource ResourceKey=border}">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                            <Rectangle.OpacityMask>
+                                                                <VisualBrush Visual="{StaticResource appbar_box}"
+                                    					Stretch="Fill" />
+                                                            </Rectangle.OpacityMask>
+                                                        </Rectangle>
+                                                        <TextBlock><Run Text="Other"/></TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Border Style="{DynamicResource ResourceKey=border}">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                            <Rectangle.OpacityMask>
+                                                                <VisualBrush Visual="{StaticResource appbar_box}"
+                                    					Stretch="Fill" />
+                                                            </Rectangle.OpacityMask>
+                                                        </Rectangle>
+                                                        <TextBlock><Run Text="Security"/></TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                            </ListView>
+                                        </TabItem>
+                                        <TabItem Style="{DynamicResource HeadlessTabControl}">
+                                            <ListView Width="Auto" HorizontalContentAlignment="Stretch" BorderBrush="{x:Null}" >
+                                                <ListView.Resources>
+                                                    <Style TargetType="{x:Type Rectangle}" x:Key="rectangle">
+                                                        <Setter Property="Width" Value="10"/>
+                                                        <Setter Property="Height" Value="10"/>
+                                                        <Setter Property="Fill" Value="Black"/>
+                                                        <Setter Property="Margin" Value="5"/>
+                                                    </Style>
+                                                    <Style TargetType="Border" x:Key="border">
+                                                        <Setter Property="Padding" Value="5"></Setter>
+                                                    </Style>
+                                                </ListView.Resources>
+                                                <Border Style="{DynamicResource ResourceKey=border}">
+                                                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                            <Rectangle.OpacityMask>
+                                                                <VisualBrush Visual="{StaticResource appbar_settings}"
+                                    					Stretch="Fill" />
+                                                            </Rectangle.OpacityMask>
+                                                        </Rectangle>
+                                                        <TextBlock><Run Text="General"/></TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Border Style="{DynamicResource ResourceKey=border}">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                            <Rectangle.OpacityMask>
+                                                                <VisualBrush Visual="{StaticResource appbar_settings}"
+                                    					Stretch="Fill" />
+                                                            </Rectangle.OpacityMask>
+                                                        </Rectangle>
+                                                        <TextBlock><Run Text="Execution Options"/></TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Border Style="{DynamicResource ResourceKey=border}">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                            <Rectangle.OpacityMask>
+                                                                <VisualBrush Visual="{StaticResource appbar_settings}"
+                                    					Stretch="Fill" />
+                                                            </Rectangle.OpacityMask>
+                                                        </Rectangle>
+                                                        <TextBlock><Run Text="Other"/></TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                                <Border Style="{DynamicResource ResourceKey=border}">
+                                                    <StackPanel Orientation="Horizontal">
+                                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}">
+                                                            <Rectangle.OpacityMask>
+                                                                <VisualBrush Visual="{StaticResource appbar_settings}"
+                                    					Stretch="Fill" />
+                                                            </Rectangle.OpacityMask>
+                                                        </Rectangle>
+                                                        <TextBlock><Run Text="Security"/></TextBlock>
+                                                    </StackPanel>
+                                                </Border>
+                                            </ListView>
+                                        </TabItem>
+                                    </TabControl>
+                                    
                                 </Border>
                             </DockPanel>
                         </Border>

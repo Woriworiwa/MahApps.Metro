@@ -70,7 +70,7 @@ namespace Demo
             tools_variables.Visibility = System.Windows.Visibility.Hidden;
             tools_events_order.Visibility = System.Windows.Visibility.Hidden;
 
-            //left_tabs.SelectedIndex = 0;
+            left_tabs.SelectedIndex = 0;
         }
         private void LeftTabs2_Click(object sender, RoutedEventArgs e)
         {
@@ -86,7 +86,7 @@ namespace Demo
             tools_variables.Visibility = System.Windows.Visibility.Visible;
             tools_events_order.Visibility = System.Windows.Visibility.Hidden;
 
-            //left_tabs.SelectedIndex = 1;
+            left_tabs.SelectedIndex = 1;
         }
         private void LeftTabs3_Click(object sender, RoutedEventArgs e)
         {
@@ -102,7 +102,7 @@ namespace Demo
             tools_variables.Visibility = System.Windows.Visibility.Hidden;
             tools_events_order.Visibility = System.Windows.Visibility.Visible;
 
-            //left_tabs.SelectedIndex = 2;
+            left_tabs.SelectedIndex = 2;
         }
 
     }
