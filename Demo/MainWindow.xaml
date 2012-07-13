@@ -377,7 +377,7 @@
                             				VerticalAlignment="Top"                                                                				
                             				Padding="5, 10, 5, 10"
                             				Height="Auto"
-                            				MetroImageSource="{StaticResource appbar_lightning}"                            		
+                            				MetroImageSource="{StaticResource appbar_vector_circle}"                            		
                             				Content="Events" 
                             				Background="#FF921678"
                             				Click="LeftTabs3_Click" BorderBrush="{x:Null}" Foreground="#FFA3A089" BorderThickness="0" Width="Auto"/>
@@ -519,7 +519,7 @@
                                                     <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
                                                         <Rectangle Style="{StaticResource ResourceKey=rectangle}">
                                                             <Rectangle.OpacityMask>
-                                                                <VisualBrush Visual="{StaticResource appbar_settings}"
+                                                                <VisualBrush Visual="{StaticResource appbar_vector_circle}"
                                     					Stretch="Fill" />
                                                             </Rectangle.OpacityMask>
                                                         </Rectangle>
@@ -530,7 +530,7 @@
                                                     <StackPanel Orientation="Horizontal">
                                                         <Rectangle Style="{StaticResource ResourceKey=rectangle}">
                                                             <Rectangle.OpacityMask>
-                                                                <VisualBrush Visual="{StaticResource appbar_settings}"
+                                                                <VisualBrush Visual="{StaticResource appbar_vector_circle}"
                                     					Stretch="Fill" />
                                                             </Rectangle.OpacityMask>
                                                         </Rectangle>
@@ -541,7 +541,7 @@
                                                     <StackPanel Orientation="Horizontal">
                                                         <Rectangle Style="{StaticResource ResourceKey=rectangle}">
                                                             <Rectangle.OpacityMask>
-                                                                <VisualBrush Visual="{StaticResource appbar_settings}"
+                                                                <VisualBrush Visual="{StaticResource appbar_vector_circle}"
                                     					Stretch="Fill" />
                                                             </Rectangle.OpacityMask>
                                                         </Rectangle>
@@ -552,7 +552,7 @@
                                                     <StackPanel Orientation="Horizontal">
                                                         <Rectangle Style="{StaticResource ResourceKey=rectangle}">
                                                             <Rectangle.OpacityMask>
-                                                                <VisualBrush Visual="{StaticResource appbar_settings}"
+                                                                <VisualBrush Visual="{StaticResource appbar_vector_circle}"
                                     					Stretch="Fill" />
                                                             </Rectangle.OpacityMask>
                                                         </Rectangle>
