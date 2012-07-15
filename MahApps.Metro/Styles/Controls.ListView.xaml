@@ -34,10 +34,12 @@
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type ListViewItem}">
                     <Border x:Name="Bd" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+                        <DockPanel>
                         <Grid>
                             <GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                            <ContentPresenter x:Name="contentPresenter" Visibility="Collapsed" />
-                        </Grid>
+                            <ContentPresenter x:Name="contentPresenter" Visibility="Collapsed" />                                
+                            </Grid>                            
+                        </DockPanel>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="GridView.ColumnCollection" Value="{x:Null}">
@@ -46,6 +48,7 @@
                         <Trigger Property="IsSelected" Value="true">
                             <Setter TargetName="Bd" Property="BorderBrush" Value="#FF143c65" />
                             <Setter Property="Background" TargetName="Bd" Value="{DynamicResource AccentColorBrush}"></Setter>
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource AccentColorBrush}"></Setter>                            
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Bd" Property="Background">
