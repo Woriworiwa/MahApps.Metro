@@ -36,6 +36,7 @@ namespace Demo
             set
             {
                 this.Header.BorderBrush = value;
+                this.Header.Background = value;
             }
         }
 
@@ -44,16 +45,60 @@ namespace Demo
             set { trigger_name.Text = value; }
         }
 
+
+        public SolidColorBrush EventsNumberForeground
+        {
+            set { events_number.Foreground= value; }
+        }
+
+        public string EventsNumber
+        {
+            set
+            {
+                events_number.Text = value;
+            }
+        }
+
+        public string EventsText
+        {
+            set
+            {
+                events_text.Text = value;
+            }
+        }
+
+        public SolidColorBrush ErrorsNumberForeground
+        {
+            set { errors_number.Foreground = value; }
+        }
+
+        public string ErrorsNumber
+        {
+            set
+            {
+                errors_number.Text = value;
+            }
+        }
+
+        public string ErrorsText
+        {
+            set
+            {
+                errors_text.Text = value;
+            }
+        }
+
+
         private void LayoutRoot_MouseEnter(object sender, MouseEventArgs e)
         {
             header_command.Visibility = System.Windows.Visibility.Visible;
-            Header.Padding = new Thickness(3);
+            this.Height += 20 ;            
         }
 
         private void LayoutRoot_MouseLeave(object sender, MouseEventArgs e)
         {
             header_command.Visibility = System.Windows.Visibility.Collapsed;
-            Header.Padding = new Thickness(0);
+            this.Height -= 20;            
         }
 	}
 }

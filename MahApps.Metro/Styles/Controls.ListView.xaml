@@ -37,7 +37,8 @@
                         <DockPanel>
                         <Grid>
                             <GridViewRowPresenter VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
-                            <ContentPresenter x:Name="contentPresenter" Visibility="Collapsed" />                                
+                                <ContentPresenter x:Name="contentPresenter" Visibility="Collapsed">                                    
+                                </ContentPresenter>
                             </Grid>                            
                         </DockPanel>
                     </Border>
@@ -48,7 +49,8 @@
                         <Trigger Property="IsSelected" Value="true">
                             <Setter TargetName="Bd" Property="BorderBrush" Value="#FF143c65" />
                             <Setter Property="Background" TargetName="Bd" Value="{DynamicResource AccentColorBrush}"></Setter>
-                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource AccentColorBrush}"></Setter>                            
+                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource AccentColorBrush}"></Setter>
+                            <Setter Property="Foreground" Value="White"></Setter>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
                             <Setter TargetName="Bd" Property="Background">

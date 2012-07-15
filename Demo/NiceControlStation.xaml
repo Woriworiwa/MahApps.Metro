@@ -70,49 +70,62 @@
                 </LinearGradientBrush>
             </Border.Background>
             <Grid Margin="0" Background="White">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.092*"/>                    
-                    <RowDefinition Height="0.756*"/>
+                <Grid.RowDefinitions>                    
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="250"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <UniformGrid Grid.Column="1" Grid.Row="2" Rows="3" Columns="3"  Width="600">
-                    <UniformGrid.Resources>
-                        <SolidColorBrush x:Key="statusRunningBackground" Color="#BDEFDD"></SolidColorBrush>
-                        <SolidColorBrush x:Key="statusStoppedErrorBackground" Color="#F8C9CD"></SolidColorBrush>
-                        <SolidColorBrush x:Key="statusStoppedBackground" Color="#FFDDDDDD"></SolidColorBrush>
-                    </UniformGrid.Resources>
-                    <Demo:triggerItem Margin="0" BorderThickness="8" StatusBackground="{StaticResource ResourceKey=statusStoppedErrorBackground}" />
-                    <Demo:triggerItem BorderThickness="8" triggerName="Headquarter labels API" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}">
-                    </Demo:triggerItem>
-                    <Demo:triggerItem BorderThickness="8" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}"/>
-                    <Demo:triggerItem BorderThickness="8" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}"/>
-                    <Demo:triggerItem BorderThickness="8" Status="Stopped" StatusBackground="{StaticResource ResourceKey=statusStoppedBackground}"/>
-                </UniformGrid>
-                <StackPanel Grid.Row="1">
-                    <TextBlock HorizontalAlignment="Left" Margin="20,-0.001,0,0" TextWrapping="Wrap" VerticalAlignment="Top" FontSize="24"><Run Language="en-ie" Text="Solutions"/></TextBlock>
-                    <ListView BorderBrush="{x:Null}" >
-                        <ListViewItem Foreground="Black">
-                            <DockPanel>
-                                <DockPanel.Resources>
-                                    <SolidColorBrush x:Key="BlackBrush" Color="Green" />
-                                </DockPanel.Resources>
-                                <Border Background="{DynamicResource AccentColorBrush}" DockPanel.Dock="Left">
-                                    <Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.2" Width="14" Fill="White">
-                                        <Rectangle.OpacityMask>
-                                            <VisualBrush Visual="{StaticResource appbar_box_unfolded}" Stretch="Fill" />
-                                        </Rectangle.OpacityMask>
-                                    </Rectangle>
-                                </Border>
-                                <TextBlock VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light" FontWeight="Bold" Margin="3,0,0,0" HorizontalAlignment="Center"><Run Text="Production line 1 - printer Z20012"/></TextBlock>
-                            </DockPanel>
+                <Grid Grid.Column="1" Width="600" Margin="0,22,0,0">
+            		<Grid.Resources>
+            			<SolidColorBrush x:Key="statusRunningBackground" Color="#FF56D3A6"/>
+            			<SolidColorBrush x:Key="statusStoppedErrorBackground" Color="#FFFF6572"/>
+            			<SolidColorBrush x:Key="statusStoppedBackground" Color="#FFBABABA"/>
+            		</Grid.Resources>
+                	<Grid.RowDefinitions>
+                		<RowDefinition Height="150"/>
+                		<RowDefinition Height="*"/>
+                	</Grid.RowDefinitions>
+            		<Demo:triggerItem Height="130" Margin="0" BorderThickness="0" StatusBackground="{StaticResource ResourceKey=statusStoppedErrorBackground}" HorizontalAlignment="Left" Width="200" VerticalAlignment="Bottom" />
+                    <Demo:triggerItem Height="130" BorderThickness="0" triggerName="Headquarter labels API" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" Margin="200,0,200,0.485" VerticalAlignment="Bottom"/>
+                    <Demo:triggerItem Height="130" BorderThickness="8" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" HorizontalAlignment="Right" Width="200" Margin="0,0,0,0.485" VerticalAlignment="Bottom"/>
+                    <Demo:triggerItem  Height="130" BorderThickness="8" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}"
+            			ErrorsNumber="0" EventsNumber="0" ErrorsNumberForeground="Black" EventsNumberForeground="Black" HorizontalAlignment="Left" Margin="0,-0.485,0,0" Width="200" Grid.Row="1" VerticalAlignment="Top" />
+                    <Demo:triggerItem Height="130" BorderThickness="8" Status="Stopped" StatusBackground="{StaticResource ResourceKey=statusStoppedBackground}"
+                                      Margin="200,-0.485,200,0" Grid.Row="1" VerticalAlignment="Top"
+                                      />
+            	</Grid>
+                <StackPanel Orientation="Vertical">
+                    <Canvas Height="75">
+                    	<TextBlock TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" HorizontalAlignment="Left" Height="24.2" Canvas.Left="19.466" Canvas.Top="29"><Run Language="en-ie" Text="Solutions"/></TextBlock>
+                    	<Rectangle Height="9.25" Width="10.35" HorizontalAlignment="Right" VerticalAlignment="Bottom" RenderTransformOrigin="1.217,0.352" Canvas.Left="209.517" Canvas.Top="40.634">
+                    		<Rectangle.Fill>
+                    			<VisualBrush Stretch="Fill" Visual="{StaticResource appbar_add}" />
+                    		</Rectangle.Fill>
+                    	</Rectangle>
+                    	<TextBlock HorizontalAlignment="Right" TextWrapping="Wrap" Width="28" RenderTransformOrigin="0.556,-0.058" FontWeight="Bold" Height="18.433" VerticalAlignment="Bottom" Canvas.Left="223.867" Canvas.Top="36.634"><Run Text="add"/></TextBlock>
+                    </Canvas>
+                    <ListView BorderBrush="{x:Null}" Margin="16,0,0,0" >
+                        <ListViewItem Foreground="Black" Margin="0">
+                            <StackPanel Orientation="Horizontal">
+                        		<StackPanel.Resources>
+                        			<SolidColorBrush x:Key="BlackBrush" Color="Green" />
+                        		</StackPanel.Resources>
+                        		<Border Background="{DynamicResource AccentColorBrush}" HorizontalAlignment="Left" Height="25">
+                        			<Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.2" Width="14" Fill="White">
+                        				<Rectangle.OpacityMask>
+                        					<VisualBrush Visual="{StaticResource appbar_box_unfolded}" Stretch="Fill" />
+                        				</Rectangle.OpacityMask>
+                        			</Rectangle>
+                        		</Border>
+                        		<TextBlock VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light" FontWeight="Bold" Margin="5,0,0,0" HorizontalAlignment="Center"><Run Text="Production line 1 - printer Z20012"/></TextBlock>
+                        	</StackPanel>
                         </ListViewItem>
-                        <ListViewItem Foreground="Black" Margin="0,5,0,0">
+                        <ListViewItem Foreground="Black" Margin="0,10,0,0">
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel.Resources>
-                                    <SolidColorBrush x:Key="BlackBrush" Color="Green" />
+                                	<SolidColorBrush x:Key="BlackBrush" Color="Green" />
                                 </StackPanel.Resources>
                                 <Border Background="{DynamicResource AccentColorBrush}">
                                     <Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.2" Width="14" Fill="White">
@@ -121,13 +134,13 @@
                                         </Rectangle.OpacityMask>
                                     </Rectangle>
                                 </Border>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light" FontWeight="Bold" Margin="3,0,0,0"><Run Text="Main printer - Packaging center"/></TextBlock>
+                                <TextBlock Background="{Binding parent}" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light" FontWeight="Bold" Margin="5,0,0,0"><Run Text="Main printer - Packaging center"/></TextBlock>
                             </StackPanel>
                         </ListViewItem>
-                        <ListViewItem Foreground="Black">
-                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <ListViewItem Foreground="Black" Margin="0,10,0,0">
+                            <StackPanel Orientation="Horizontal" Margin="0">
                                 <StackPanel.Resources>
-                                    <SolidColorBrush x:Key="BlackBrush" Color="Green" />
+                                	<SolidColorBrush x:Key="BlackBrush" Color="Green" />
                                 </StackPanel.Resources>
                                 <Border Background="{DynamicResource AccentColorBrush}">
                                     <Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.2" Width="14" Fill="White">
@@ -136,13 +149,13 @@
                                         </Rectangle.OpacityMask>
                                     </Rectangle>
                                 </Border>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light" FontWeight="Bold" Margin="3,0,0,0"><Run Text="English and Italian label"/></TextBlock>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light" FontWeight="Bold" Margin="5,0,0,0"><Run Text="English and Italian label"/></TextBlock>
                             </StackPanel>
                         </ListViewItem>
-                        <ListViewItem Foreground="Black">
-                            <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                        <ListViewItem Foreground="Black" Margin="0,10,0,0">
+                            <StackPanel Orientation="Horizontal" Margin="0">
                                 <StackPanel.Resources>
-                                    <SolidColorBrush x:Key="BlackBrush" Color="Green" />
+                                	<SolidColorBrush x:Key="BlackBrush" Color="Green" />
                                 </StackPanel.Resources>
                                 <Border Background="{DynamicResource AccentColorBrush}">
                                     <Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.2" Width="14" Fill="White">
@@ -151,12 +164,11 @@
                                         </Rectangle.OpacityMask>
                                     </Rectangle>
                                 </Border>
-                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light" FontWeight="Bold" Margin="3,0,0,0"><Run Text="Jolly holiday stickers"/></TextBlock>
+                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light" FontWeight="Bold" Margin="5,0,0,0"><Run Text="Jolly holiday stickers"/></TextBlock>
                             </StackPanel>
                         </ListViewItem>
                     </ListView>
-                </StackPanel>
-                
+                </StackPanel>                                
                 
             </Grid>
         </Border>
