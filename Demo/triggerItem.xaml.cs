@@ -35,8 +35,8 @@ namespace Demo
         {
             set
             {
-                this.Header.BorderBrush = value;
-                this.Header.Background = value;
+                //this.Header.BorderBrush = value;
+                this.tag.Background = value;
             }
         }
 
@@ -91,13 +91,13 @@ namespace Demo
 
         private void LayoutRoot_MouseEnter(object sender, MouseEventArgs e)
         {
-            header_command.Visibility = System.Windows.Visibility.Visible;
+            //header_command.Visibility = System.Windows.Visibility.Visible;
             this.Height += 20 ;            
         }
 
         private void LayoutRoot_MouseLeave(object sender, MouseEventArgs e)
         {
-            header_command.Visibility = System.Windows.Visibility.Collapsed;
+            //header_command.Visibility = System.Windows.Visibility.Collapsed;
             this.Height -= 20;            
         }
 	}

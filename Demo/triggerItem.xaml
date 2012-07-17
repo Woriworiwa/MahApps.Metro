@@ -6,7 +6,7 @@
 	mc:Ignorable="d"
 	x:Class="Demo.triggerItem"
 	x:Name="UserControl"
-	d:DesignWidth="200" d:DesignHeight="129.528">
+	d:DesignWidth="400" d:DesignHeight="100">
     <UserControl.Resources>
         <Canvas Width="48" Height="48" Clip="F1 M 0,0L 48,0L 48,48L 0,48L 0,0" UseLayoutRounding="False" x:Key="appbar_warning">
             <Path Width="27.7572" Height="25.8747" Canvas.Left="10.1214" Canvas.Top="9.12564" Stretch="Fill" Fill="{DynamicResource BlackBrush}" Data="F1 M 36.9999,35.0003L 11.0001,35.0003C 9.82855,33.8287 9.82854,31.9292 11.0001,30.7577L 22.2322,10.0043C 23.4038,8.83274 25.3033,8.83274 26.4749,10.0043L 36.9999,30.7577C 38.1715,31.9293 38.1715,33.8287 36.9999,35.0003 Z M 21.5,16.25L 22.75,26.5L 25.25,26.5L 26.5,16.25L 21.5,16.25 Z M 24,28C 22.8954,28 22,28.8954 22,30C 22,31.1046 22.8954,32 24,32C 25.1046,32 26,31.1046 26,30C 26,28.8954 25.1046,28 24,28 Z " />
@@ -27,73 +27,62 @@
     </UserControl.Resources>
 
     <Grid x:Name="LayoutRoot" MouseEnter="LayoutRoot_MouseEnter" MouseLeave="LayoutRoot_MouseLeave">
-        <Grid Background="White">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="25"/>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
-            <Border x:Name="Header" Padding="5">
-                <DockPanel x:Name="header_command" Visibility="Collapsed">
-                    <StackPanel Orientation="Horizontal" Height="20" >
-                        <Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="0,0,3,0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14" Width="14" Fill="White">
-                            <Rectangle.OpacityMask>
-                                <VisualBrush Visual="{StaticResource appbar_warning}"
-								Stretch="Fill" />
-                            </Rectangle.OpacityMask>
-                        </Rectangle>
-                        <TextBlock x:Name="status" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontWeight="Bold" FontSize="12"><Run Text="Stopped by errors"/><InlineUIContainer/></TextBlock>
-                    </StackPanel>
-
-                    <Button HorizontalAlignment="Right" Height="Auto" VerticalAlignment="Center" Margin="0" Style="{DynamicResource squareButtonStyle}">
-                        <StackPanel Orientation="Horizontal">
-                            <Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="5,0" HorizontalAlignment="Center" VerticalAlignment="Center" Height="12" Width="12">
-                                <Rectangle.OpacityMask>
-                                    <VisualBrush Visual="{StaticResource appbar_play}"
-									Stretch="Fill" />
-                                </Rectangle.OpacityMask>
-                            </Rectangle>
-                            <TextBlock Margin="0,0,5,0"><Run Text="Start"/></TextBlock>
-                        </StackPanel>
-                    </Button>
-                </DockPanel>
-            </Border>
-            <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.2" Width="14">
+        <Grid Background="#FFEDEDED">            
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="90"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="50"></ColumnDefinition>
+                <ColumnDefinition Width="Auto"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel x:Name="tag">  
+                <StackPanel VerticalAlignment="Center">
+                <Rectangle Style="{StaticResource rectangle}" Height="27" Width="26" Fill="White" VerticalAlignment="Center" >                  
                     <Rectangle.OpacityMask>
-                        <VisualBrush Visual="{StaticResource appbar_database}"
-							Stretch="Fill" />
+                        <VisualBrush Visual="{StaticResource appbar_database}" Stretch="Fill" />
                     </Rectangle.OpacityMask>
                 </Rectangle>
-                <TextBlock x:Name="trigger_name"  TextWrapping="Wrap"  FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left"><Run Language="en-ie" Text="Spiderman shirt production trigger"/></TextBlock>
-            </StackPanel>
-
-            <StackPanel Grid.Row="2" >
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock  TextWrapping="Wrap" Margin="10,0,0,0" FontSize="10" Foreground="#FF666666" VerticalAlignment="Center" HorizontalAlignment="Right" Width="60.027"><Run Language="en-ie" Text="Table name:"/></TextBlock>
-                    <TextBlock HorizontalAlignment="Left" FontSize="10" Foreground="#FF666666" VerticalAlignment="Center" Margin="3,0,0,0"><Run Text="Shirts"/></TextBlock>
-                </StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock  TextWrapping="Wrap" Margin="10,0,0,0" FontSize="10" Foreground="#FF666666" VerticalAlignment="Center" HorizontalAlignment="Center" Width="59.36"><Run Language="en-ie" Text="Last event:"/></TextBlock>
-                    <TextBlock HorizontalAlignment="Left" FontSize="10" Foreground="#FF666666" VerticalAlignment="Center" Margin="3,0,0,0"><Run Text="15.07 13:36"/></TextBlock>
+                <TextBlock x:Name="status" FontSize="12"><Run Text="Stopped by errors" /><InlineUIContainer /></TextBlock>
                 </StackPanel>
             </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Vertical" VerticalAlignment="Center">            
+                <TextBlock x:Name="trigger_name"  TextWrapping="Wrap"  FontSize="12" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="5,3,0,3"><Run Language="en-ie" Text="Spiderman shirt production trigger"/></TextBlock>
+                <StackPanel Orientation="Vertical" >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="10" Foreground="#FF666666" Margin="10,0,0,0"  Width="61"><Run Language="en-ie" Text="Table name:"/></TextBlock>
+                        <TextBlock FontSize="10" Foreground="#FF666666" Margin="3,0,0,0"><Run Text="Shirts"/></TextBlock>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock  TextWrapping="Wrap" Margin="10,0,0,0" FontSize="10" Foreground="#FF666666" VerticalAlignment="Center" HorizontalAlignment="Center" Width="59.36"><Run Language="en-ie" Text="Last event:"/></TextBlock>
+                        <TextBlock HorizontalAlignment="Left" FontSize="10" Foreground="#FF666666" VerticalAlignment="Center" Margin="3,0,0,0"><Run Text="15.07 13:36"/></TextBlock>
+                    </StackPanel>                
+                </StackPanel>
 
             <Grid Grid.Row="3" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <StackPanel Grid.Column="0" Margin="0,0,0,3" Grid.Row="1" RenderTransformOrigin="0.652,0.309" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-                    <TextBlock x:Name="events_number" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF0076FF" FontSize="16" Margin="0,0,5,0"><Run Text="11"/></TextBlock>
-                    <TextBlock x:Name="events_text" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"><Run Text="Events"/></TextBlock>
-                </StackPanel>
-                <StackPanel Grid.Column="1" Margin="0,0,0,3" Grid.Row="1" RenderTransformOrigin="0.652,0.309" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
-                    <TextBlock x:Name="errors_number" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFFF6767" FontSize="16" Margin="0,0,5,0"><Run Text="3"/></TextBlock>
-                    <TextBlock x:Name="errors_text" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="16"><Run Text="Errors"/></TextBlock>
-                </StackPanel>
+                <StackPanel Grid.Column="0" Margin="0,0,0,3" Grid.Row="1" RenderTransformOrigin="0.652,0.309" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center"></StackPanel>
+                <StackPanel Grid.Column="1" Margin="0,0,0,3" Grid.Row="1" RenderTransformOrigin="0.652,0.309" Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center"></StackPanel>
             </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Column="2" VerticalAlignment="Center">
+                <TextBlock x:Name="errors_number" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FFFF6767" FontSize="16"><Run Text="3" /></TextBlock>
+                <TextBlock x:Name="errors_text" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" ><Run Text="Errors" /></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Grid.Column="3" VerticalAlignment="Center">
+                <TextBlock x:Name="events_number" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="#FF0076FF" FontSize="16" ><Run Text="11" /></TextBlock>
+                <TextBlock x:Name="events_text" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" ><Run Text="Events" /></TextBlock>
+            </StackPanel>
+            <StackPanel Grid.Column="4" Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,5,0">
+                <Rectangle Style="{StaticResource ResourceKey=rectangle}" Height="10" Width="10">
+                    <Rectangle.OpacityMask>
+                        <VisualBrush Visual="{StaticResource appbar_play}" Stretch="Fill" />
+                    </Rectangle.OpacityMask>
+                </Rectangle>
+                <TextBlock FontSize="10" FontWeight="Bold" VerticalAlignment="Center"><Run Text="START" /></TextBlock>
+            </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

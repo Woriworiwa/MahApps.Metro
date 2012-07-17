@@ -77,24 +77,25 @@
                     <ColumnDefinition Width="250"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <Grid Grid.Column="1" Width="600" Margin="0,22,0,0">
+                <Grid Grid.Column="1" Margin="20">
             		<Grid.Resources>
             			<SolidColorBrush x:Key="statusRunningBackground" Color="#FF56D3A6"/>
             			<SolidColorBrush x:Key="statusStoppedErrorBackground" Color="#FFFF6572"/>
             			<SolidColorBrush x:Key="statusStoppedBackground" Color="#FFBABABA"/>
             		</Grid.Resources>
                 	<Grid.RowDefinitions>
-                		<RowDefinition Height="150"/>
-                		<RowDefinition Height="*"/>
-                	</Grid.RowDefinitions>
-            		<Demo:triggerItem Height="130" Margin="0" BorderThickness="0" StatusBackground="{StaticResource ResourceKey=statusStoppedErrorBackground}" HorizontalAlignment="Left" Width="200" VerticalAlignment="Bottom" />
-                    <Demo:triggerItem Height="130" BorderThickness="0" triggerName="Headquarter labels API" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" Margin="200,0,200,0.485" VerticalAlignment="Bottom"/>
-                    <Demo:triggerItem Height="130" BorderThickness="8" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" HorizontalAlignment="Right" Width="200" Margin="0,0,0,0.485" VerticalAlignment="Bottom"/>
-                    <Demo:triggerItem  Height="130" BorderThickness="8" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}"
-            			ErrorsNumber="0" EventsNumber="0" ErrorsNumberForeground="Black" EventsNumberForeground="Black" HorizontalAlignment="Left" Margin="0,-0.485,0,0" Width="200" Grid.Row="1" VerticalAlignment="Top" />
-                    <Demo:triggerItem Height="130" BorderThickness="8" Status="Stopped" StatusBackground="{StaticResource ResourceKey=statusStoppedBackground}"
-                                      Margin="200,-0.485,200,0" Grid.Row="1" VerticalAlignment="Top"
-                                      />
+                		<RowDefinition Height="80"/>
+                		<RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="80"/>
+                	</Grid.RowDefinitions>                    
+                    <Demo:triggerItem Margin="5,10" Grid.Row="0" Grid.Column="1" BorderThickness="0" StatusBackground="{StaticResource ResourceKey=statusStoppedErrorBackground}" />
+                    <Demo:triggerItem Margin="5,10" Grid.Row="1" Grid.Column="1"  BorderThickness="0" triggerName="Headquarter labels API" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}"/>
+                    <Demo:triggerItem Margin="5,10" Grid.Row="2" Grid.Column="1" BorderThickness="0" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" />
+                    <Demo:triggerItem Margin="5,10" Grid.Row="3" Grid.Column="1" BorderThickness="0" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" ErrorsNumber="0" EventsNumber="0" ErrorsNumberForeground="Black" EventsNumberForeground="Black" />
+                    <Demo:triggerItem Margin="5,10" Grid.Row="4" Grid.Column="1" BorderThickness="0" Status="Stopped" StatusBackground="{StaticResource ResourceKey=statusStoppedBackground}"/>
             	</Grid>
                 <StackPanel Orientation="Vertical">
                     <Canvas Height="75">
@@ -119,7 +120,7 @@
                         				</Rectangle.OpacityMask>
                         			</Rectangle>
                         		</Border>
-                        		<TextBlock VerticalAlignment="Center" FontSize="14" FontFamily="Segoe UI Light" FontWeight="Bold" Margin="5,0,0,0" HorizontalAlignment="Center"><Run Text="Production line 1 - printer Z20012"/></TextBlock>
+                        		<TextBlock VerticalAlignment="Center" FontSize="12" UseLayoutRounding="True" Margin="5,0,0,0" HorizontalAlignment="Center"><Run Text="Production line 1 - printer Z20012"/></TextBlock>
                         	</StackPanel>
                         </ListViewItem>
                         <ListViewItem Foreground="Black" Margin="0,10,0,0">
