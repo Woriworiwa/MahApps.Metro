@@ -10,6 +10,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using System.Windows.Media.Animation;
 
 namespace Demo
 {
@@ -21,6 +22,33 @@ namespace Demo
         public NiceControlStation()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var v = this.menu.Visibility;
+            if (v == System.Windows.Visibility.Collapsed)
+            {
+                this.menu.Visibility = System.Windows.Visibility.Visible;
+            }
+            else
+            {
+                this.menu.Visibility = System.Windows.Visibility.Collapsed;
+            }
+
+        }
+
+        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (solution_pointer != null)
+            {
+                DoubleAnimation positionAnimation = new DoubleAnimation();
+                positionAnimation.From = (double)solution_pointer.GetValue(Canvas.TopProperty);
+                positionAnimation.To = (double)(solutions.SelectedIndex * 55);
+                positionAnimation.Duration = TimeSpan.FromMilliseconds(150);
+                solution_pointer.BeginAnimation(Canvas.TopProperty, positionAnimation);
+            }
+                //solution_pointer.SetValue(Canvas.TopProperty, (double)(solutions.SelectedIndex * 55));
         }
     }
 }

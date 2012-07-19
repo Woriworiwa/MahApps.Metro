@@ -37,6 +37,15 @@ namespace Demo
             {
                 //this.Header.BorderBrush = value;
                 this.tag.Background = value;
+                this.border.BorderBrush = value;
+            }
+        }
+
+        public Visual icon
+        {
+            set
+            {
+                ((VisualBrush)trigger_icon.OpacityMask).Visual = value;
             }
         }
 

@@ -24,7 +24,7 @@
 
 
     <Style TargetType="{x:Type ListViewItem}">
-        <Setter Property="Foreground" Value="{DynamicResource BlackBrush}" />
+        
         <Setter Property="HorizontalContentAlignment" Value="Stretch" />
         <Setter Property="VerticalContentAlignment" Value="Center" />
         <Setter Property="MinHeight" Value="25" />
@@ -47,9 +47,9 @@
                             <Setter TargetName="contentPresenter" Property="Visibility" Value="Visible"/>
                         </Trigger>
                         <Trigger Property="IsSelected" Value="true">
-                            <Setter TargetName="Bd" Property="BorderBrush" Value="#FF143c65" />
+                            <Setter TargetName="Bd" Property="BorderBrush" Value="#FF143c65" />                            
                             <Setter Property="Background" TargetName="Bd" Value="{DynamicResource AccentColorBrush}"></Setter>
-                            <Setter Property="Background" TargetName="Bd" Value="{DynamicResource AccentColorBrush}"></Setter>
+                            <Setter Property="TextBlock.Foreground" Value="White"></Setter>
                             <Setter Property="Foreground" Value="White"></Setter>
                         </Trigger>
                         <Trigger Property="IsMouseOver" Value="True">
@@ -58,7 +58,8 @@
                                     <SolidColorBrush Color="{DynamicResource AccentColor3}" />
                                 </Setter.Value>
                             </Setter>
-
+                            <Setter Property="TextBlock.Foreground" Value="White"></Setter>
+                            <Setter Property="Foreground" Value="White"></Setter>
                         </Trigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -71,6 +72,8 @@
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="BorderBrush" TargetName="Bd" Value="#FF143c65" />
+                            <Setter Property="TextBlock.Foreground" Value="White"></Setter>
+                            <Setter Property="Foreground" Value="White"></Setter>
                         </MultiTrigger>
                         <MultiTrigger>
                             <MultiTrigger.Conditions>
@@ -83,6 +86,8 @@
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="BorderBrush" TargetName="Bd" Value="#FF143c65" />
+                            <Setter Property="TextBlock.Foreground" Value="White"></Setter>
+                            <Setter Property="Foreground" Value="White"></Setter>
                         </MultiTrigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
