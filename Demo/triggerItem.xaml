@@ -34,8 +34,8 @@
                 <TextBlock Foreground="White">Stopped</TextBlock>
             </StackPanel>
         </Grid.ToolTip>
-        <Border BorderThickness="1" x:Name="border">
-        <Grid Background="#FFEDEDED">            
+        <Border BorderThickness="0" x:Name="border">
+        <Grid >            
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="90"></ColumnDefinition>
                 <ColumnDefinition Width="*"></ColumnDefinition>

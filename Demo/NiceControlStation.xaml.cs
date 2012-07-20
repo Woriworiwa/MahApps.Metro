@@ -44,10 +44,12 @@ namespace Demo
             {
                 DoubleAnimation positionAnimation = new DoubleAnimation();
                 positionAnimation.From = (double)solution_pointer.GetValue(Canvas.TopProperty);
-                positionAnimation.To = (double)(solutions.SelectedIndex * 55);
+                positionAnimation.To = (double)(solutions.SelectedIndex * (10 + 35) + (10 + 35/2 - 9) );
                 positionAnimation.Duration = TimeSpan.FromMilliseconds(150);
                 solution_pointer.BeginAnimation(Canvas.TopProperty, positionAnimation);
             }
+
+            triggers_tab.SelectedIndex = solutions.SelectedIndex;
                 //solution_pointer.SetValue(Canvas.TopProperty, (double)(solutions.SelectedIndex * 55));
         }
     }
