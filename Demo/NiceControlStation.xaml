@@ -62,7 +62,8 @@
     </Window.Resources>
     <Controls:MetroWindow.WindowCommands>
         <Controls:WindowCommands>
-            <Button Content="menu" Click="Button_Click" />
+            <Button Content="menu" Click="Button_Click" />            
+            <Button Content="help"></Button>
         </Controls:WindowCommands>
     </Controls:MetroWindow.WindowCommands>
     <Controls:MetroContentControl>
@@ -74,14 +75,13 @@
                     <GradientStop Color="#FF959F00"/>
                 </LinearGradientBrush>
             </Border.Background>
-            <Grid Margin="0" Background="White">
+            <Grid Margin="0" Background="White" OpacityMask="#FFF0AEAE">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"></RowDefinition>
-                    <RowDefinition Height="70"></RowDefinition>                    
+                    <RowDefinition Height="70"></RowDefinition>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="400"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <StackPanel Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Left" x:Name="menu" Height="28.62" Visibility="Collapsed" VerticalAlignment="Top">
@@ -97,170 +97,229 @@
                         <TextBlock   Canvas.Left="19" Canvas.Top="33" FontSize="20"  TextWrapping="Wrap" ><Run Language="en-ie" Text="mainprinterstation" /></TextBlock>
                     </StackPanel>
                     <StackPanel DockPanel.Dock="Right" Orientation="Horizontal" Height="Auto" VerticalAlignment="Center" Margin="0,0,20,0">
-                        <TextBlock Margin="10" FontSize="18" Foreground="Gray">About</TextBlock>
-                        <TextBlock Margin="10" FontSize="18" FontWeight="Bold">Triggers</TextBlock>
-                        <TextBlock Margin="10" FontSize="18" Foreground="Gray">Logs</TextBlock>
+                        <TextBlock x:Name="about_button" Margin="10" FontSize="18" FontWeight="Bold"  MouseDown="TextBlock_MouseDown_1">About</TextBlock>
+                        <TextBlock x:Name="triggers_button" Margin="10" FontSize="18" Foreground="Gray" MouseDown="TextBlock_MouseDown_2">Triggers</TextBlock>
+                        <TextBlock x:Name="logs_button" Margin="10" FontSize="18" Foreground="Gray" MouseDown="TextBlock_MouseDown_3">Logs</TextBlock>
+                        <StackPanel.ToolTip>
+                            <StackPanel>
+                                <TextBlock FontSize="22">Switch views between triggers and logs</TextBlock>
+                            </StackPanel>
+                        </StackPanel.ToolTip>
                     </StackPanel>
-                </DockPanel>                
-                <StackPanel Grid.Row="2" Grid.Column="1">
-                    <Border BorderBrush="Aqua" BorderThickness="0" Margin="0,5">
-                        <Grid Grid.Row="1" Grid.Column="1" Margin="5">
-                            <Grid.Resources>
-                                <SolidColorBrush x:Key="statusRunningBackground" Color="#007333"/>
-                                <SolidColorBrush x:Key="statusStoppedErrorBackground" Color="#e53d12"/>
-                                <SolidColorBrush x:Key="statusStoppedBackground" Color="#FFBABABA"/>
-                            </Grid.Resources>
-                            <TabControl Grid.Row="0" Grid.Column="1" x:Name="triggers_tab">
-                                <TabItem Style="{DynamicResource HeadlessTabControl}">
-                                    <ListView Grid.Row="0" Grid.Column="1" BorderThickness="0">                                        
-                                        <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
-                                            <Demo:triggerItem Grid.Row="2" Grid.Column="1" BorderThickness="1" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" icon="{StaticResource appbar_disconnect}" />
+                </DockPanel>
+                <TabControl Grid.Row="2" x:Name="content_tab">
+                    <TabItem Style="{DynamicResource HeadlessTabControl}">
+                        <DockPanel LastChildFill="False" HorizontalAlignment="Stretch">
+                            <StackPanel HorizontalAlignment="Stretch" DockPanel.Dock="Top">
+                                <TextBlock FontSize="32"  HorizontalAlignment="Center" VerticalAlignment="Stretch" Margin="0,40,0,0">NiceWatch Manager</TextBlock>
+                                <StackPanel HorizontalAlignment="Center" Margin="0,20,0,0">
+                                    <TextBlock>Manager triggers</TextBlock>
+                                    <TextBlock Margin="0,8,0,0">Monitor performance</TextBlock>
+                                    <TextBlock Margin="0,8,0,0">Manager your licenses</TextBlock>
+                                </StackPanel>
+                            </StackPanel>
+                            <Grid  DockPanel.Dock="Bottom">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <StackPanel Orientation="Horizontal">
+                                    <StackPanel.Resources>
+                                        <SolidColorBrush x:Key="BlackBrush" Color="#00667A" />
+                                    </StackPanel.Resources>                                    
+                                    <StackPanel Orientation="Horizontal" Margin="22">                                       
+                                        
+                                        <TextBlock Foreground="Gray" FontSize="12" >Guided tour</TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="22">
+                                        
+                                        <TextBlock Foreground="Gray" FontSize="12" >Video tutorials</TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="22">                                        
+                                        <TextBlock Foreground="Gray" FontSize="12" >User guide</TextBlock>
+                                    </StackPanel>
+                                    <StackPanel Orientation="Horizontal" Margin="22">
+                                        <TextBlock Foreground="Gray" FontSize="12" >nicelabel.com</TextBlock>
+                                    </StackPanel>
+                                </StackPanel>
+                            </Grid>
+                        </DockPanel>
+
+                    </TabItem>
+                    <TabItem Style="{DynamicResource HeadlessTabControl}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="400"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel Grid.Column="0" Orientation="Vertical">
+                                <Canvas Height="30">
+                                    <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" HorizontalAlignment="Left" Height="24.2" Canvas.Left="30" Canvas.Top="1"><Run Language="en-ie" Text="Solutions"/></TextBlock>
+                                    <Rectangle Height="9.25" Width="10.35" HorizontalAlignment="Right" VerticalAlignment="Bottom" RenderTransformOrigin="1.217,0.352" Canvas.Left="308" Canvas.Top="13">
+                                        <Rectangle.Fill>
+                                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_add}" />
+                                        </Rectangle.Fill>
+                                    </Rectangle>
+                                    <TextBlock HorizontalAlignment="Right" ToolTip="Add new solution" TextWrapping="Wrap" Width="28" RenderTransformOrigin="0.556,-0.058" FontSize="14" FontFamily="Segoe UI" FontWeight="Bold" Height="18.433" VerticalAlignment="Bottom" Canvas.Left="321" Canvas.Top="7"><Run Text="add"/></TextBlock>
+                                </Canvas>
+                                <DockPanel HorizontalAlignment="Stretch" >
+                                    <ListView x:Name="solutions" BorderBrush="{x:Null}" Margin="16,0,0,0" HorizontalAlignment="Stretch" Width="350" SelectionChanged="ListView_SelectionChanged">
+                                        <ListViewItem Foreground="Black" Margin="0,10,0,0" Height="35" Selector.IsSelected="True">
+                                            <StackPanel Orientation="Horizontal">
+                                                <Border Background="{DynamicResource AccentColorBrush}" HorizontalAlignment="Left" Height="25">
+                                                    <Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.2" Width="14" Fill="White">
+                                                        <Rectangle.OpacityMask>
+                                                            <VisualBrush Visual="{StaticResource appbar_box_unfolded}" Stretch="Fill" />
+                                                        </Rectangle.OpacityMask>
+                                                    </Rectangle>
+                                                </Border>
+                                                <TextBlock VerticalAlignment="Center" FontFamily="Segoe UI" FontSize="16" UseLayoutRounding="True" Margin="5,0,0,0" HorizontalAlignment="Center"><Run Text="Woriworiwa/MahApps.Metro"/></TextBlock>
+                                            </StackPanel>
                                         </ListViewItem>
-                                        <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
-                                            <Demo:triggerItem Grid.Row="3" Grid.Column="1" BorderThickness="1" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" ErrorsNumber="0" EventsNumber="0" ErrorsNumberForeground="Black" EventsNumberForeground="Black" icon="{StaticResource appbar_arrow_down_up}" />
+                                        <ListViewItem Foreground="Black" Margin="0,10,0,0"  Height="35">
+                                            <StackPanel Orientation="Horizontal">
+                                                <StackPanel.Resources>
+                                                    <SolidColorBrush x:Key="BlackBrush" Color="Green" />
+                                                </StackPanel.Resources>
+                                                <Border Background="{DynamicResource AccentColorBrush}">
+                                                    <Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.2" Width="14" Fill="White">
+                                                        <Rectangle.OpacityMask>
+                                                            <VisualBrush Visual="{StaticResource appbar_box_unfolded}" Stretch="Fill" />
+                                                        </Rectangle.OpacityMask>
+                                                    </Rectangle>
+                                                </Border>
+                                                <TextBlock Background="{Binding parent}" FontFamily="Segoe UI" FontSize="16" UseLayoutRounding="True" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0"><Run Text="Main printer - Packaging center"/></TextBlock>
+                                            </StackPanel>
                                         </ListViewItem>
-                                        <ListViewItem Margin="5">
-                                            <Demo:triggerItem Grid.Row="4" Grid.Column="1" BorderThickness="1" Status="Stopped" StatusBackground="{StaticResource ResourceKey=statusStoppedBackground}"/>
+                                        <ListViewItem Foreground="Black" Margin="0,10,0,0" Height="35">
+                                            <StackPanel Orientation="Horizontal" Margin="0">
+                                                <StackPanel.Resources>
+                                                    <SolidColorBrush x:Key="BlackBrush" Color="Green" />
+                                                </StackPanel.Resources>
+                                                <Border Background="{DynamicResource AccentColorBrush}">
+                                                    <Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.2" Width="14" Fill="White">
+                                                        <Rectangle.OpacityMask>
+                                                            <VisualBrush Visual="{StaticResource appbar_box_unfolded}" Stretch="Fill" />
+                                                        </Rectangle.OpacityMask>
+                                                    </Rectangle>
+                                                </Border>
+                                                <TextBlock VerticalAlignment="Center" FontFamily="Segoe UI" FontSize="16" UseLayoutRounding="True" HorizontalAlignment="Center" Margin="5,0,0,0"><Run Text="English and Italian label"/></TextBlock>
+                                            </StackPanel>
+                                        </ListViewItem>
+                                        <ListViewItem Foreground="Black" Margin="0,10,0,0"  Height="35">
+                                            <StackPanel Orientation="Horizontal" Margin="0">
+                                                <StackPanel.Resources>
+                                                    <SolidColorBrush x:Key="BlackBrush" Color="Green" />
+                                                </StackPanel.Resources>
+                                                <Border Background="{DynamicResource AccentColorBrush}">
+                                                    <Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.2" Width="14" Fill="White">
+                                                        <Rectangle.OpacityMask>
+                                                            <VisualBrush Visual="{StaticResource appbar_box_unfolded}" Stretch="Fill" />
+                                                        </Rectangle.OpacityMask>
+                                                    </Rectangle>
+                                                </Border>
+                                                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="16" UseLayoutRounding="True" Margin="5,0,0,0"><Run Text="Jolly holiday stickers"/></TextBlock>
+                                            </StackPanel>
                                         </ListViewItem>
                                     </ListView>
-                                </TabItem>
-                                <TabItem Style="{DynamicResource HeadlessTabControl}">
-                                    <ListView Grid.Row="0" Grid.Column="1" BorderThickness="0">
-                                        <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
-                                            <Demo:triggerItem  BorderThickness="1" StatusBackground="{StaticResource ResourceKey=statusStoppedErrorBackground}" icon="{StaticResource appbar_share}"></Demo:triggerItem>
-                                        </ListViewItem>
-                                        <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
-                                            <Demo:triggerItem Grid.Row="1" Grid.Column="1"  BorderThickness="1" triggerName="Headquarter labels API" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}"/>
-                                        </ListViewItem>
-                                        <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
-                                            <Demo:triggerItem Grid.Row="2" Grid.Column="1" BorderThickness="1" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" icon="{StaticResource appbar_disconnect}" />
-                                        </ListViewItem>                                        
-                                    </ListView>
-                                </TabItem>
-                                <TabItem Style="{DynamicResource HeadlessTabControl}">
-                                    <ListView Grid.Row="0" Grid.Column="1" BorderThickness="0">
-                                        <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
-                                            <Demo:triggerItem  BorderThickness="1" StatusBackground="{StaticResource ResourceKey=statusStoppedErrorBackground}" icon="{StaticResource appbar_share}"></Demo:triggerItem>
-                                        </ListViewItem>
-                                        <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
-                                            <Demo:triggerItem Grid.Row="1" Grid.Column="1"  BorderThickness="1" triggerName="Headquarter labels API" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}"/>
-                                        </ListViewItem>
-                                        <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
-                                            <Demo:triggerItem Grid.Row="2" Grid.Column="1" BorderThickness="1" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" icon="{StaticResource appbar_disconnect}" />
-                                        </ListViewItem>
-                                        <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
-                                            <Demo:triggerItem Grid.Row="3" Grid.Column="1" BorderThickness="1" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" ErrorsNumber="0" EventsNumber="0" ErrorsNumberForeground="Black" EventsNumberForeground="Black" icon="{StaticResource appbar_arrow_down_up}" />
-                                        </ListViewItem>                                        
-                                    </ListView>
-                                </TabItem>
-                                <TabItem Style="{DynamicResource HeadlessTabControl}">
-                                    <ListView Grid.Row="0" Grid.Column="1" BorderThickness="0">
-                                        <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
-                                            <Demo:triggerItem  BorderThickness="1" StatusBackground="{StaticResource ResourceKey=statusStoppedErrorBackground}" icon="{StaticResource appbar_share}"></Demo:triggerItem>
-                                        </ListViewItem>
-                                        <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
-                                            <Demo:triggerItem Grid.Row="1" Grid.Column="1"  BorderThickness="1" triggerName="Headquarter labels API" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}"/>
-                                        </ListViewItem>
-                                        <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
-                                            <Demo:triggerItem Grid.Row="2" Grid.Column="1" BorderThickness="1" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" icon="{StaticResource appbar_disconnect}" />
-                                        </ListViewItem>
-                                        <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
-                                            <Demo:triggerItem Grid.Row="3" Grid.Column="1" BorderThickness="1" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" ErrorsNumber="0" EventsNumber="0" ErrorsNumberForeground="Black" EventsNumberForeground="Black" icon="{StaticResource appbar_arrow_down_up}" />
-                                        </ListViewItem>
-                                        <ListViewItem Margin="5">
-                                            <Demo:triggerItem Grid.Row="4" Grid.Column="1" BorderThickness="1" Status="Stopped" StatusBackground="{StaticResource ResourceKey=statusStoppedBackground}"/>
-                                        </ListViewItem>
-                                    </ListView>
-                                </TabItem>
-                            </TabControl>
-                            
+                                    <Canvas DockPanel.Dock="Right" Width="20" >
+                                        <Canvas.Resources>
+                                            <SolidColorBrush x:Key="ss" Color="#959F00"></SolidColorBrush>
+                                        </Canvas.Resources>
+                                        <Rectangle x:Name="solution_pointer" Fill="#959F00" Height="18" Width="10.35" HorizontalAlignment="Right" VerticalAlignment="Bottom" RenderTransformOrigin="1.217,0.352" Canvas.Left="1" Canvas.Top="21">
+                                            <Rectangle.OpacityMask>
+                                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_play}" />
+                                            </Rectangle.OpacityMask>
+                                        </Rectangle>
+                                    </Canvas>
+                                </DockPanel>
+
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <Border BorderBrush="Aqua" BorderThickness="0" Margin="0,5">
+                                    <Grid Grid.Row="1" Grid.Column="1" Margin="5">
+                                        <Grid.Resources>
+                                            <SolidColorBrush x:Key="statusRunningBackground" Color="#007333"/>
+                                            <SolidColorBrush x:Key="statusStoppedErrorBackground" Color="#e53d12"/>
+                                            <SolidColorBrush x:Key="statusStoppedBackground" Color="#FFBABABA"/>
+                                        </Grid.Resources>
+                                        <TabControl Grid.Row="0" Grid.Column="1" x:Name="triggers_tab">
+                                            <TabItem Style="{DynamicResource HeadlessTabControl}">
+                                                <ListView Grid.Row="0" Grid.Column="1" BorderThickness="0">
+                                                    <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
+                                                        <Demo:triggerItem Grid.Row="2" Grid.Column="1" BorderThickness="1" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" icon="{StaticResource appbar_disconnect}" />
+                                                    </ListViewItem>
+                                                    <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
+                                                        <Demo:triggerItem Grid.Row="3" Grid.Column="1" BorderThickness="1" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" ErrorsNumber="0" EventsNumber="0" ErrorsNumberForeground="Black" EventsNumberForeground="Black" icon="{StaticResource appbar_arrow_down_up}" />
+                                                    </ListViewItem>
+                                                    <ListViewItem Margin="5">
+                                                        <Demo:triggerItem Grid.Row="4" Grid.Column="1" BorderThickness="1" Status="Stopped" StatusBackground="{StaticResource ResourceKey=statusStoppedBackground}"/>
+                                                    </ListViewItem>
+                                                </ListView>
+                                            </TabItem>
+                                            <TabItem Style="{DynamicResource HeadlessTabControl}">
+                                                <ListView Grid.Row="0" Grid.Column="1" BorderThickness="0">
+                                                    <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
+                                                        <Demo:triggerItem  BorderThickness="1" StatusBackground="{StaticResource ResourceKey=statusStoppedErrorBackground}" icon="{StaticResource appbar_share}"></Demo:triggerItem>
+                                                    </ListViewItem>
+                                                    <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
+                                                        <Demo:triggerItem Grid.Row="1" Grid.Column="1"  BorderThickness="1" triggerName="Headquarter labels API" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}"/>
+                                                    </ListViewItem>
+                                                    <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
+                                                        <Demo:triggerItem Grid.Row="2" Grid.Column="1" BorderThickness="1" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" icon="{StaticResource appbar_disconnect}" />
+                                                    </ListViewItem>
+                                                </ListView>
+                                            </TabItem>
+                                            <TabItem Style="{DynamicResource HeadlessTabControl}">
+                                                <ListView Grid.Row="0" Grid.Column="1" BorderThickness="0">
+                                                    <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
+                                                        <Demo:triggerItem  BorderThickness="1" StatusBackground="{StaticResource ResourceKey=statusStoppedErrorBackground}" icon="{StaticResource appbar_share}"></Demo:triggerItem>
+                                                    </ListViewItem>
+                                                    <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
+                                                        <Demo:triggerItem Grid.Row="1" Grid.Column="1"  BorderThickness="1" triggerName="Headquarter labels API" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}"/>
+                                                    </ListViewItem>
+                                                    <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
+                                                        <Demo:triggerItem Grid.Row="2" Grid.Column="1" BorderThickness="1" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" icon="{StaticResource appbar_disconnect}" />
+                                                    </ListViewItem>
+                                                    <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
+                                                        <Demo:triggerItem Grid.Row="3" Grid.Column="1" BorderThickness="1" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" ErrorsNumber="0" EventsNumber="0" ErrorsNumberForeground="Black" EventsNumberForeground="Black" icon="{StaticResource appbar_arrow_down_up}" />
+                                                    </ListViewItem>
+                                                </ListView>
+                                            </TabItem>
+                                            <TabItem Style="{DynamicResource HeadlessTabControl}">
+                                                <ListView Grid.Row="0" Grid.Column="1" BorderThickness="0">
+                                                    <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
+                                                        <Demo:triggerItem  BorderThickness="1" StatusBackground="{StaticResource ResourceKey=statusStoppedErrorBackground}" icon="{StaticResource appbar_share}"></Demo:triggerItem>
+                                                    </ListViewItem>
+                                                    <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
+                                                        <Demo:triggerItem Grid.Row="1" Grid.Column="1"  BorderThickness="1" triggerName="Headquarter labels API" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}"/>
+                                                    </ListViewItem>
+                                                    <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
+                                                        <Demo:triggerItem Grid.Row="2" Grid.Column="1" BorderThickness="1" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" icon="{StaticResource appbar_disconnect}" />
+                                                    </ListViewItem>
+                                                    <ListViewItem Margin="5" Style="{DynamicResource ResourceKey=grayListViewItem}">
+                                                        <Demo:triggerItem Grid.Row="3" Grid.Column="1" BorderThickness="1" Status="Running" StatusBackground="{StaticResource ResourceKey=statusRunningBackground}" ErrorsNumber="0" EventsNumber="0" ErrorsNumberForeground="Black" EventsNumberForeground="Black" icon="{StaticResource appbar_arrow_down_up}" />
+                                                    </ListViewItem>
+                                                    <ListViewItem Margin="5">
+                                                        <Demo:triggerItem Grid.Row="4" Grid.Column="1" BorderThickness="1" Status="Stopped" StatusBackground="{StaticResource ResourceKey=statusStoppedBackground}"/>
+                                                    </ListViewItem>
+                                                </ListView>
+                                            </TabItem>
+                                        </TabControl>
+
+                                    </Grid>
+                                </Border>
+                            </StackPanel>
+
                         </Grid>
-                    </Border>
-                </StackPanel>
-                <StackPanel Grid.Row="2" Orientation="Vertical">
-                    <Canvas Height="30">
-                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Top" FontSize="20" HorizontalAlignment="Left" Height="24.2" Canvas.Left="30" Canvas.Top="1"><Run Language="en-ie" Text="Solutions"/></TextBlock>
-                        <Rectangle Height="9.25" Width="10.35" HorizontalAlignment="Right" VerticalAlignment="Bottom" RenderTransformOrigin="1.217,0.352" Canvas.Left="308" Canvas.Top="13">
-                            <Rectangle.Fill>
-                                <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_add}" />
-                            </Rectangle.Fill>
-                        </Rectangle>
-                        <TextBlock HorizontalAlignment="Right" ToolTip="Add new solution" TextWrapping="Wrap" Width="28" RenderTransformOrigin="0.556,-0.058" FontSize="14" FontFamily="Segoe UI" FontWeight="Bold" Height="18.433" VerticalAlignment="Bottom" Canvas.Left="321" Canvas.Top="7"><Run Text="add"/></TextBlock>
-                    </Canvas>
-                    <DockPanel HorizontalAlignment="Stretch" >
-                        <ListView x:Name="solutions" BorderBrush="{x:Null}" Margin="16,0,0,0" HorizontalAlignment="Stretch" Width="350" SelectionChanged="ListView_SelectionChanged">
-                            <ListViewItem Foreground="Black" Margin="0,10,0,0" Height="35" Selector.IsSelected="True">
-                                <StackPanel Orientation="Horizontal">
-                                    <Border Background="{DynamicResource AccentColorBrush}" HorizontalAlignment="Left" Height="25">
-                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.2" Width="14" Fill="White">
-                                            <Rectangle.OpacityMask>
-                                                <VisualBrush Visual="{StaticResource appbar_box_unfolded}" Stretch="Fill" />
-                                            </Rectangle.OpacityMask>
-                                        </Rectangle>
-                                    </Border>
-                                    <TextBlock VerticalAlignment="Center" FontFamily="Segoe UI" FontSize="16" UseLayoutRounding="True" Margin="5,0,0,0" HorizontalAlignment="Center"><Run Text="Woriworiwa/MahApps.Metro"/></TextBlock>
-                                </StackPanel>
-                            </ListViewItem>
-                            <ListViewItem Foreground="Black" Margin="0,10,0,0"  Height="35">
-                                <StackPanel Orientation="Horizontal">
-                                    <StackPanel.Resources>
-                                        <SolidColorBrush x:Key="BlackBrush" Color="Green" />
-                                    </StackPanel.Resources>
-                                    <Border Background="{DynamicResource AccentColorBrush}">
-                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.2" Width="14" Fill="White">
-                                            <Rectangle.OpacityMask>
-                                                <VisualBrush Visual="{StaticResource appbar_box_unfolded}" Stretch="Fill" />
-                                            </Rectangle.OpacityMask>
-                                        </Rectangle>
-                                    </Border>
-                                    <TextBlock Background="{Binding parent}" FontFamily="Segoe UI" FontSize="16" UseLayoutRounding="True" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="5,0,0,0"><Run Text="Main printer - Packaging center"/></TextBlock>
-                                </StackPanel>
-                            </ListViewItem>
-                            <ListViewItem Foreground="Black" Margin="0,10,0,0" Height="35">
-                                <StackPanel Orientation="Horizontal" Margin="0">
-                                    <StackPanel.Resources>
-                                        <SolidColorBrush x:Key="BlackBrush" Color="Green" />
-                                    </StackPanel.Resources>
-                                    <Border Background="{DynamicResource AccentColorBrush}">
-                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.2" Width="14" Fill="White">
-                                            <Rectangle.OpacityMask>
-                                                <VisualBrush Visual="{StaticResource appbar_box_unfolded}" Stretch="Fill" />
-                                            </Rectangle.OpacityMask>
-                                        </Rectangle>
-                                    </Border>
-                                    <TextBlock VerticalAlignment="Center" FontFamily="Segoe UI" FontSize="16" UseLayoutRounding="True" HorizontalAlignment="Center" Margin="5,0,0,0"><Run Text="English and Italian label"/></TextBlock>
-                                </StackPanel>
-                            </ListViewItem>
-                            <ListViewItem Foreground="Black" Margin="0,10,0,0"  Height="35">
-                                <StackPanel Orientation="Horizontal" Margin="0">
-                                    <StackPanel.Resources>
-                                        <SolidColorBrush x:Key="BlackBrush" Color="Green" />
-                                    </StackPanel.Resources>
-                                    <Border Background="{DynamicResource AccentColorBrush}">
-                                        <Rectangle Style="{StaticResource ResourceKey=rectangle}" Margin="5" HorizontalAlignment="Center" VerticalAlignment="Center" Height="14.2" Width="14" Fill="White">
-                                            <Rectangle.OpacityMask>
-                                                <VisualBrush Visual="{StaticResource appbar_box_unfolded}" Stretch="Fill" />
-                                            </Rectangle.OpacityMask>
-                                        </Rectangle>
-                                    </Border>
-                                    <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="Segoe UI" FontSize="16" UseLayoutRounding="True" Margin="5,0,0,0"><Run Text="Jolly holiday stickers"/></TextBlock>
-                                </StackPanel>
-                            </ListViewItem>
-                        </ListView>
-                        <Canvas DockPanel.Dock="Right" Width="20" >
-                            <Canvas.Resources>
-                                <SolidColorBrush x:Key="ss" Color="#959F00"></SolidColorBrush>
-                            </Canvas.Resources>
-                            <Rectangle x:Name="solution_pointer" Fill="#959F00" Height="18" Width="10.35" HorizontalAlignment="Right" VerticalAlignment="Bottom" RenderTransformOrigin="1.217,0.352" Canvas.Left="1" Canvas.Top="21">
-                                <Rectangle.OpacityMask>
-                                    <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_play}" />
-                                </Rectangle.OpacityMask>
-                            </Rectangle>
-                        </Canvas>
-                    </DockPanel>
+                    </TabItem>
+                    <TabItem Style="{DynamicResource HeadlessTabControl}">
 
-                </StackPanel>
+                    </TabItem>
+                </TabControl>
 
+                <Popup IsOpen="True">
+                    <TextBlock>hello</TextBlock></Popup>
             </Grid>
         </Border>
     </Controls:MetroContentControl>
