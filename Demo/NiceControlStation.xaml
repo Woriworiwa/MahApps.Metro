@@ -58,7 +58,6 @@
             </Style>
             <!-- ComboBox, RadioButton, CheckBox, etc... -->
         </ResourceDictionary>
-
     </Window.Resources>
     <Controls:MetroWindow.WindowCommands>
         <Controls:WindowCommands>
@@ -67,7 +66,6 @@
         </Controls:WindowCommands>
     </Controls:MetroWindow.WindowCommands>
     <Controls:MetroContentControl>
-
         <Border BorderBrush="#FF9B9B9D" BorderThickness="0" Padding="5,0,5,5">
             <Border.Background>
                 <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
@@ -93,7 +91,7 @@
                     <TextBlock  Text="About" Margin="10,0,0,0" FontSize="16" />
                 </StackPanel>
                 <DockPanel Grid.Row="1" Grid.ColumnSpan="2" Background="#f1f3f5" LastChildFill="False">
-                    <StackPanel DockPanel.Dock="Left" VerticalAlignment="Top" Margin="10" ToolTip="Server name">
+                    <StackPanel x:Name="server" DockPanel.Dock="Left" VerticalAlignment="Top" Margin="10" ToolTip="Server name">
                         <TextBlock   Canvas.Left="19" Canvas.Top="33" FontSize="20"  TextWrapping="Wrap" ><Run Language="en-ie" Text="mainprinterstation" /></TextBlock>
                     </StackPanel>
                     <StackPanel x:Name="nav" DockPanel.Dock="Right" Orientation="Horizontal" Height="Auto" VerticalAlignment="Center" Margin="0,0,20,0">
@@ -316,10 +314,7 @@
                     <TabItem Style="{DynamicResource HeadlessTabControl}">
 
                     </TabItem>
-                </TabControl>
-
-                <Popup IsOpen="True">
-                    <TextBlock>hello</TextBlock></Popup>
+                </TabControl>                
             </Grid>
         </Border>
     </Controls:MetroContentControl>

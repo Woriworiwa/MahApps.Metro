@@ -103,6 +103,9 @@
       <DependentUpon>NiceControlStation.xaml</DependentUpon>
     </Compile>
     <Compile Include="Overlay.cs" />
+    <Compile Include="Player.xaml.cs">
+      <DependentUpon>Player.xaml</DependentUpon>
+    </Compile>
     <Compile Include="triggerDisplay.xaml.cs">
       <DependentUpon>triggerDisplay.xaml</DependentUpon>
     </Compile>
@@ -134,6 +137,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NiceControlStation.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Player.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

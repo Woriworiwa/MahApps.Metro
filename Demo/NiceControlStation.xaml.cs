@@ -101,20 +101,51 @@ namespace Demo
             logs_button.Foreground = Brushes.Black;
         }
 
+        AdornerLayer l, overlayAdonerLayer = null;
         private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            Overlay ad = new Overlay(app);
-            AdornerLayer adLayer = AdornerLayer.GetAdornerLayer(app);
-            adLayer.Add(ad);
+            DockPanel overlayContainer = new DockPanel();
+            overlayContainer.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+            overlayContainer.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+            overlayContainer.Background = new SolidColorBrush(Color.FromArgb(100, 0,0,0));            
+            overlayContainer.Width = app.ActualWidth;
+            overlayContainer.Height = app.ActualHeight;
+            overlayContainer.LastChildFill = false;
 
-            //Bubble bubble = new Bubble(nav);
-            //AdornerLayer bubbleLayer = AdornerLayer.GetAdornerLayer(nav);
-            //bubbleLayer.Add(bubble);
+            var player = new Player();
+            player.Width = 300;
+            player.Height = 50;
+            player.SetValue(DockPanel.DockProperty, Dock.Bottom);
+            player.NextClick += new EventHandler(player_NextClick);
+            player.StopClick += new EventHandler(player_StopClick);
+            overlayContainer.Children.Add(player);
+
+            UIElementAdorner overlayAdorner = new UIElementAdorner(overlayContainer, app);
+            overlayAdonerLayer = AdornerLayer.GetAdornerLayer(app);
+            overlayAdonerLayer.Add(overlayAdorner);            
+
 
             StackPanel sp = new StackPanel();            
             sp.Margin = new Thickness(0, nav.ActualHeight + 5, 0, 0);
             sp.Width = nav.ActualWidth;
 
+            var tb = CreateNavHelp();
+
+            Polygon poly = CreateTriangle();
+
+            sp.Children.Add(poly);
+            sp.Children.Add(tb);
+
+
+            UIElementAdorner d = new UIElementAdorner(sp, nav);
+            l = AdornerLayer.GetAdornerLayer(nav);
+            l.Add(d);
+
+           
+        }
+
+        private static TextBlock CreateNavHelp()
+        {
             var tb = new TextBlock();
             tb.Text = "Navigate between Triggers, Logs and the home screen.";
             tb.Padding = new Thickness(5);
@@ -122,21 +153,64 @@ namespace Demo
             tb.Foreground = Brushes.White;
             tb.Background = new SolidColorBrush(Color.FromRgb(0, 107, 194));
             tb.FontSize = 14;
+            return tb;
+        }
 
+        private static TextBlock CreateServerHelp()
+        {
+            var tb = new TextBlock();
+            tb.Text = "Server status and information.";
+            tb.Padding = new Thickness(5);
+            tb.TextWrapping = TextWrapping.WrapWithOverflow;
+            tb.Foreground = Brushes.White;
+            tb.Background = new SolidColorBrush(Color.FromRgb(0, 107, 194));
+            tb.FontSize = 14;
+            return tb;
+        }
+
+        private static Polygon CreateTriangle()
+        {
             Polygon poly = new Polygon();
-            poly.Points = new PointCollection() { new Point(1, 0),new Point(2, 1), new Point(0, 1) };
+            poly.Points = new PointCollection() { new Point(1, 0), new Point(2, 1), new Point(0, 1) };
             poly.Fill = new SolidColorBrush(Color.FromRgb(0, 107, 194));
             poly.Stretch = Stretch.Fill;
             poly.Width = 15;
             poly.Height = 15;
+            return poly;
+        }
+
+        void player_NextClick(object sender, EventArgs e)
+        {
+            try { l.Remove((l.GetAdorners(nav))[0]); }
+            catch { }
+
+
+            StackPanel sp = new StackPanel();
+            sp.Margin = new Thickness(0, server.ActualHeight + 5, 0, 0);
+            sp.Width = nav.ActualWidth;
+
+            var tb = CreateServerHelp();
+
+            Polygon poly = CreateTriangle();
 
             sp.Children.Add(poly);
             sp.Children.Add(tb);
 
-
-            UIElementAdorner d = new UIElementAdorner(sp, nav);
-            AdornerLayer l = AdornerLayer.GetAdornerLayer(nav);
+            UIElementAdorner d = new UIElementAdorner(sp, server);
+            l = AdornerLayer.GetAdornerLayer(nav);
             l.Add(d);
+        }
+
+        void player_StopClick(object sender, EventArgs e)
+        {
+            try { overlayAdonerLayer.Remove((overlayAdonerLayer.GetAdorners(app))[0]); }
+            catch { }
+
+            try { l.Remove((l.GetAdorners(nav))[0]); }
+            catch { }
+
+            try { l.Remove((l.GetAdorners(server))[0]); }
+            catch { }
         }
     }
 }
