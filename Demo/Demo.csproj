@@ -98,15 +98,18 @@
     <Compile Include="BarButton.xaml.cs">
       <DependentUpon>BarButton.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Bubble.cs" />
     <Compile Include="NiceControlStation.xaml.cs">
       <DependentUpon>NiceControlStation.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Overlay.cs" />
     <Compile Include="triggerDisplay.xaml.cs">
       <DependentUpon>triggerDisplay.xaml</DependentUpon>
     </Compile>
     <Compile Include="triggerItem.xaml.cs">
       <DependentUpon>triggerItem.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UIElementAdorner.cs" />
     <Compile Include="Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>

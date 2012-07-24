@@ -36,6 +36,7 @@ namespace Demo
                 this.menu.Visibility = System.Windows.Visibility.Collapsed;
             }
 
+            
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -98,6 +99,44 @@ namespace Demo
 
             logs_button.FontWeight = FontWeights.Bold;
             logs_button.Foreground = Brushes.Black;
+        }
+
+        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            Overlay ad = new Overlay(app);
+            AdornerLayer adLayer = AdornerLayer.GetAdornerLayer(app);
+            adLayer.Add(ad);
+
+            //Bubble bubble = new Bubble(nav);
+            //AdornerLayer bubbleLayer = AdornerLayer.GetAdornerLayer(nav);
+            //bubbleLayer.Add(bubble);
+
+            StackPanel sp = new StackPanel();            
+            sp.Margin = new Thickness(0, nav.ActualHeight + 5, 0, 0);
+            sp.Width = nav.ActualWidth;
+
+            var tb = new TextBlock();
+            tb.Text = "Navigate between Triggers, Logs and the home screen.";
+            tb.Padding = new Thickness(5);
+            tb.TextWrapping = TextWrapping.WrapWithOverflow;
+            tb.Foreground = Brushes.White;
+            tb.Background = new SolidColorBrush(Color.FromRgb(0, 107, 194));
+            tb.FontSize = 14;
+
+            Polygon poly = new Polygon();
+            poly.Points = new PointCollection() { new Point(1, 0),new Point(2, 1), new Point(0, 1) };
+            poly.Fill = new SolidColorBrush(Color.FromRgb(0, 107, 194));
+            poly.Stretch = Stretch.Fill;
+            poly.Width = 15;
+            poly.Height = 15;
+
+            sp.Children.Add(poly);
+            sp.Children.Add(tb);
+
+
+            UIElementAdorner d = new UIElementAdorner(sp, nav);
+            AdornerLayer l = AdornerLayer.GetAdornerLayer(nav);
+            l.Add(d);
         }
     }
 }
